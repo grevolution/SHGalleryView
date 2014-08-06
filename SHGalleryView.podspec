@@ -8,22 +8,22 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SHGalleryView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "An iOS Gallery View for Images and Videos"
 
   s.description  = <<-DESC
                     This is a Page View Controllers based Gallery for Images and Videos which you can use to showcase your media items. Images support zoom/pinch and you can play videos in the same flow.
                    DESC
 
-  s.homepage      = "https://github.com/grevolution/SHLineGraphView"
+  s.homepage      = "https://github.com/grevolution/SHGalleryView"
   s.license       = {:type => 'MIT'}
   s.author        = { "Shan Ul Haq" => "g@grevolution.me" }
 
-  s.platform     = :ios
-  s.platform     = :ios, "6.0"
-  s.source       = { :git => "https://github.com/grevolution/SHGalleryView.git", :tag => s.version }
-
-  s.source_files  = "SHGalleryView/**/*.{h,m,xib}"
+  s.platform      = :ios
+  s.platform      = :ios, "6.0"
+  s.source        = { :git => "https://github.com/grevolution/SHGalleryView.git", :tag => s.version }
+  s.source_files  = "SHGalleryView/SHGalleryView/*.{h,m}"
+  s.resources     = "SHGalleryView/SHGalleryView/*.{xib}"
 
   s.framework  = "MediaPlayer"
   s.requires_arc = true
