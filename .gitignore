@@ -1,0 +1,8 @@
+DerivedData
+.DS_Store
+Pods
+Pods/*
+Build
+Build/*
+DerivedData
+DerivedData/*
