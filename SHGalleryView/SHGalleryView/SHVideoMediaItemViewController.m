@@ -87,33 +87,27 @@
 	MPMoviePlaybackState state = _player.playbackState;
 	switch (state) {
 		case MPMoviePlaybackStateStopped: {
-			NSLog(@"MPMoviePlaybackStateStopped");
 			[_mediaControlView changePlayPauseButtonState:kPlayPauseButtonStatePlay];
 			[self toggleLoading:YES];
 		} break;
 		case MPMoviePlaybackStatePlaying: {
-			NSLog(@"MPMoviePlaybackStatePlaying");
 			[_mediaControlView changePlayPauseButtonState:kPlayPauseButtonStatePause];
 			[self monitorPlaybackTime];
 			[self toggleLoading:NO];
 		} break;
 		case MPMoviePlaybackStatePaused: {
-			NSLog(@"MPMoviePlaybackStatePaused");
 			[self toggleLoading:NO];
 			[_mediaControlView changePlayPauseButtonState:kPlayPauseButtonStatePlay];
 		} break;
 		case MPMoviePlaybackStateInterrupted:
-			NSLog(@"MPMoviePlaybackStateInterrupted");
 			break;
 		case MPMoviePlaybackStateSeekingForward:
-			NSLog(@"MPMoviePlaybackStateSeekingForward");
 			[self toggleLoading:YES];
 			if(_player.currentPlaybackRate == MPMoviePlaybackStatePaused) {
 				[self toggleLoading:NO];
 			}
 			break;
 		case MPMoviePlaybackStateSeekingBackward:
-			NSLog(@"MPMoviePlaybackStateSeekingBackward");
 			[self toggleLoading:YES];
 			if(_player.currentPlaybackRate == MPMoviePlaybackStatePaused) {
 				[self toggleLoading:NO];
