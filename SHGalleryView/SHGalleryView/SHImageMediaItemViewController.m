@@ -37,13 +37,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor clearColor];
     [_imageView setImageWithURL:[NSURL URLWithString:self.mediaItem.resourcePath] placeholderImage:nil];    
     [_imageScrollView setDelegate:self];
     [_imageScrollView setBouncesZoom:YES];
     
     [_imageView setTag:ZOOM_VIEW_TAG];
-    //[_imageScrollView setContentSize:[_imageView frame].size];
+    [_imageScrollView setContentSize:[_imageView frame].size];
     
     // calculate minimum scale to perfectly fit image width, and begin at that scale
     float minimumScale = [_imageScrollView frame].size.width  / [_imageView frame].size.width;

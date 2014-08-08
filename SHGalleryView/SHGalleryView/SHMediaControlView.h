@@ -28,10 +28,10 @@ typedef NS_ENUM(int, kViewSate) {
 @property (nonatomic, getter = isControlShowing) BOOL controlShowing;
 @property (nonatomic, strong) SHMediaControlTheme *theme;
 
-- (void)toggleDoneButtonState:(kViewSate)state animated:(BOOL)animated;
-- (void)toggleMediaControlsState:(kViewSate)state animated:(BOOL)animated;
-- (void)toggleGalleryControlState:(kViewSate)state animated:(BOOL)animated;
-- (void)toggleAllControls:(kViewSate)state animated:(BOOL)animated;
+- (void)toggleDoneButtonState:(NSArray *)args;
+- (void)toggleMediaControlsState:(NSArray *)args;
+- (void)toggleGalleryControlState:(NSArray *)args;
+- (void)toggleAllControls:(NSArray *)args;
 
 - (void)changePlayPauseButtonState:(kPlayPauseButtonState)state;
 

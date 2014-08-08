@@ -39,6 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor clearColor];
     
     _player = [[MPMoviePlayerController alloc] init];
     _player.fullscreen = NO;
@@ -88,6 +89,7 @@
 	switch (state) {
 		case MPMoviePlaybackStateStopped: {
 			[_mediaControlView changePlayPauseButtonState:kPlayPauseButtonStatePlay];
+            [self.view bringSubviewToFront:_imgThumbnail];
 			[self toggleLoading:YES];
 		} break;
 		case MPMoviePlaybackStatePlaying: {

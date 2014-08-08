@@ -117,75 +117,75 @@
 
 #pragma mark - Visibility methods
 
-- (void)toggleDoneButtonState:(kViewSate)state animated:(BOOL)animated {
-    if(state == kViewStateHidden) {
-        [self hideViewWithAlpha:_btnDone animated:animated];
+- (void)toggleDoneButtonState:(NSArray *)args {
+    if([[args firstObject] intValue] == kViewStateHidden) {
+        [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         _doneShowing = NO;
     } else {
-        [self showViewWithAlpha:_btnDone animated:animated];
+        [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         _doneShowing = YES;
     }
 }
 
-- (void)toggleMediaControlsState:(kViewSate)state animated:(BOOL)animated {
-    if(state == kViewStateHidden) {
+- (void)toggleMediaControlsState:(NSArray *)args {
+    if([[args firstObject] intValue] == kViewStateHidden) {
         if(!_mediaShowing) {
             return;
         }
-        [self hideViewWithAlpha:_btnPlay animated:animated];
-        [self hideViewWithAlpha:_viewMediaControl animated:animated];
+        [self hideViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
+        [self hideViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         _mediaShowing = NO;
     } else {
         if(_mediaShowing){
             return;
         }
-        [self showViewWithAlpha:_btnPlay animated:animated];
-        [self showViewWithAlpha:_viewMediaControl animated:animated];
+        [self showViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
+        [self showViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         _mediaShowing = YES;
     }
 }
 
-- (void)toggleGalleryControlState:(kViewSate)state animated:(BOOL)animated {
-    if(state == kViewStateHidden) {
+- (void)toggleGalleryControlState:(NSArray *)args {
+    if([[args firstObject] intValue] == kViewStateHidden) {
         if(!_galleryShowing){
             return;
         }
-        [self hideViewWithAlpha:_viewGalleryControl animated:animated];
+        [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
         _galleryShowing = NO;
     } else {
         if(_galleryShowing){
             return;
         }
-        [self showViewWithAlpha:_viewGalleryControl animated:animated];
+        [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
         _galleryShowing = YES;
     }
 }
 
-- (void)toggleAllControls:(kViewSate)state animated:(BOOL)animated {
-    if(state == kViewStateHidden) {
+- (void)toggleAllControls:(NSArray *)args {
+    if([[args firstObject] intValue] == kViewStateHidden) {
         if(_doneShowing) {
-            [self hideViewWithAlpha:_btnDone animated:animated];
+            [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         }
         if(_mediaShowing){
-            [self hideViewWithAlpha:_btnPlay animated:animated];
-            [self hideViewWithAlpha:_viewMediaControl animated:animated];
+            [self hideViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
+            [self hideViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         }
         if(_galleryShowing){
-            [self hideViewWithAlpha:_viewGalleryControl animated:animated];
+            [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
         }
         _doneShowing = _mediaShowing = _galleryShowing = NO;
     } else {
         if(!_doneShowing){
-            [self showViewWithAlpha:_btnDone animated:animated];
+            [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         }
         
         if(!_mediaShowing){
-            [self showViewWithAlpha:_btnPlay animated:animated];
-            [self showViewWithAlpha:_viewMediaControl animated:animated];
+            [self showViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
+            [self showViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         }
         
         if(!_galleryShowing){
-            [self showViewWithAlpha:_viewGalleryControl animated:animated];
+            [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
         }
         _doneShowing = _mediaShowing = _galleryShowing = YES;
     }

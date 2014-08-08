@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor clearColor];
     _totalNumberOfItems = [_dataSource numberOfItems];
     _currentIndex = 0;
     
@@ -160,9 +160,9 @@
 - (void)updateMediaControls {
     SHMediaItem *mediaItem = [_dataSource mediaItemIndex:self.currentIndex];
     if(mediaItem.mediaType == kMediaTypeImage) {
-        [_mediaControlView toggleMediaControlsState:kViewStateHidden animated:YES];
+        [_mediaControlView toggleMediaControlsState:@[@(kViewStateHidden), @YES]];
     } else {
-        [_mediaControlView toggleAllControls:kViewStateVisible animated:YES];
+        [_mediaControlView toggleAllControls:@[@(kViewStateVisible), @YES]];
     }
     [_mediaControlView updateCaptions:mediaItem];
 }
@@ -195,18 +195,18 @@
 	if(_mediaControlView.isControlShowing == NO){
         SHMediaItem *mediaItem = [_dataSource mediaItemIndex:self.currentIndex];
         if(mediaItem.mediaType == kMediaTypeImage) {
-            [_mediaControlView toggleDoneButtonState:kViewStateVisible animated:YES];
-            [_mediaControlView toggleGalleryControlState:kViewStateVisible animated:YES];
+            [_mediaControlView toggleDoneButtonState:@[@(kViewStateVisible), @YES]];
+            [_mediaControlView toggleGalleryControlState:@[@(kViewStateVisible), @YES]];
         } else {
-            [_mediaControlView toggleAllControls:kViewStateVisible animated:YES];
+            [_mediaControlView toggleAllControls:@[@(kViewStateVisible), @YES]];
         }
 	} else if(_mediaControlView.isControlShowing == YES) {
         SHMediaItem *mediaItem = [_dataSource mediaItemIndex:self.currentIndex];
         if(mediaItem.mediaType == kMediaTypeImage) {
-            [_mediaControlView toggleDoneButtonState:kViewStateHidden animated:YES];
-            [_mediaControlView toggleGalleryControlState:kViewStateHidden animated:YES];
+            [_mediaControlView toggleDoneButtonState:@[@(kViewStateHidden), @YES]];
+            [_mediaControlView toggleGalleryControlState:@[@(kViewStateHidden), @YES]];
         } else {
-            [_mediaControlView toggleAllControls:kViewStateHidden animated:YES];
+            [_mediaControlView toggleAllControls:@[@(kViewStateHidden), @YES]];
         }
 	}
 }

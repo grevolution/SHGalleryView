@@ -75,6 +75,7 @@
         item.mediaType = kMediaTypeVideo;
         item.captionTitle = @"Big Buck Bunny is Awesome";
         item.resourcePath = [[[NSBundle mainBundle] URLForResource:@"big_buck_bunny" withExtension:@"mp4"] absoluteString];
+        item.mediaThumbnailImagePath = [[[NSBundle mainBundle] URLForResource:@"thumb" withExtension:@"jpg"] absoluteString];
         return item;
     }
 }
