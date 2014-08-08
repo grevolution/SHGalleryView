@@ -1,7 +1,7 @@
 SHGalleryView
 =============
 
-This is a Page View Controllers based Gallery for Images and Videos which you can use to showcase your media items. Images support zoom/pinch and you can play videos in the same flow.
+This is a Page View Controller based Gallery for Images and Videos which you can use to showcase your media items. Images support zoom/pinch and you can play videos in the same window with custom theme for video controls.
 
 [![Build Status](https://travis-ci.org/grevolution/SHGalleryView?branch=master)](https://travis-ci.org/grevolution/SHGalleryView)
 
