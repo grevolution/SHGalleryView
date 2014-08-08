@@ -222,4 +222,15 @@
 	}
 	return YES;
 }
+
+#pragma mark - Orientation Methods
+
+- (BOOL)shouldAutorotate {
+	return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+	return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+}
+
 @end
