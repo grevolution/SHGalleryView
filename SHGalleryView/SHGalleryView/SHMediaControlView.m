@@ -68,6 +68,7 @@
 
 - (void)updateCaptions:(SHMediaItem *)item {
     _lblCaptionTitle.text = item.captionTitle;
+    _lblCaptionTitle.hidden = (item.captionTitle.length == 0);
 }
 
 #pragma mark - Theme methods
