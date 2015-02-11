@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SHImageMediaItemViewController">
@@ -16,21 +17,36 @@
             <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="vfR-O3-C8m">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="vfR-O3-C8m">
                     <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4C7-sd-lYm">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4C7-sd-lYm">
                             <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="4C7-sd-lYm" firstAttribute="centerY" secondItem="vfR-O3-C8m" secondAttribute="centerY" id="6l5-lH-i62"/>
+                        <constraint firstAttribute="trailing" secondItem="4C7-sd-lYm" secondAttribute="trailing" id="UFm-Ei-EJq"/>
+                        <constraint firstItem="4C7-sd-lYm" firstAttribute="top" secondItem="vfR-O3-C8m" secondAttribute="top" id="V7N-HH-Z3l"/>
+                        <constraint firstAttribute="bottom" secondItem="4C7-sd-lYm" secondAttribute="bottom" id="XRG-jj-88E"/>
+                        <constraint firstItem="4C7-sd-lYm" firstAttribute="leading" secondItem="vfR-O3-C8m" secondAttribute="leading" id="geo-9T-leO"/>
+                        <constraint firstAttribute="centerX" secondItem="4C7-sd-lYm" secondAttribute="centerX" id="ymp-9v-wV2"/>
+                    </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vfR-O3-C8m" secondAttribute="trailing" id="AL0-Dq-pET"/>
+                <constraint firstAttribute="bottom" secondItem="vfR-O3-C8m" secondAttribute="bottom" id="IUO-0c-n5r"/>
+                <constraint firstItem="vfR-O3-C8m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jhs-YP-cgx"/>
+                <constraint firstItem="vfR-O3-C8m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ySl-2N-2Nd"/>
+            </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
