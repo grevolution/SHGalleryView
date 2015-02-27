@@ -59,7 +59,7 @@
     [self.view addSubview:_mediaControlView];
     
     [self updateMediaControls];
-    [self initializePageView];
+    [self initializePageViewAtIndex:_currentIndex];
     
     _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [_tapGesture setDelegate:self];
@@ -102,17 +102,18 @@
 
 #pragma mark - UIPageViewController helper methods
 
-- (void)initializePageView {
-    UIViewController *initialViewController = [self viewControllerAtIndex:0];
+- (void)initializePageViewAtIndex:(int)index {
+    UIViewController *initialViewController = [self viewControllerAtIndex:index];
     if(nil != initialViewController) {
         NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
         [_pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     }
 }
+
 - (void)reloadData {
     _totalNumberOfItems = [_dataSource numberOfItems];
     _currentIndex = 0;
-    [self initializePageView];
+    [self initializePageViewAtIndex:_currentIndex];
     [self updateMediaControls];
 }
 
@@ -125,7 +126,7 @@
     }
     
     _currentIndex = index;
-    [self initializePageView];
+    [self initializePageViewAtIndex:_currentIndex];
     [self updateMediaControls];
 }
 
