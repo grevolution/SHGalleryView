@@ -49,9 +49,15 @@
 
 #pragma mark - NIB Initialization
 
+- (void)setIsDoneButtonForcedHidden:(BOOL)isDoneButtonForcedHidden {
+    _isDoneButtonForcedHidden = isDoneButtonForcedHidden;
+    _btnDone.hidden = _isDoneButtonForcedHidden;
+}
+
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor clearColor];
     [self applyDefaultValues];
+    
 }
 
 - (void)applyDefaultValues {

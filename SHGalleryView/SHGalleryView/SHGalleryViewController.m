@@ -17,6 +17,7 @@
 @interface SHGalleryViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, SHMediaControlViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) SHMediaControlView *mediaControlView;
 
 @property (nonatomic) NSInteger totalNumberOfItems;
@@ -36,6 +37,13 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewDidLayoutSubviews {
+    CGSize recommendedSize = [_pageControl sizeForNumberOfPages:[_dataSource numberOfItems]];
+    CGFloat x = CGRectGetMidX(_pageViewController.view.bounds);
+    _pageControl.frame = CGRectMake(0, _pageViewController.view.bounds.size.height - recommendedSize.height, recommendedSize.width, recommendedSize.height);
+    _pageControl.center = CGPointMake(x, _pageControl.center.y);
 }
 
 - (void)viewDidLoad {
@@ -58,6 +66,14 @@
 	[self addChildViewController:_pageViewController];
 	[[self view] addSubview:[_pageViewController view]];
 	[_pageViewController didMoveToParentViewController:self];
+    
+    if(_theme.showPageControl){
+        _pageControl = [[UIPageControl alloc] init];
+        _pageControl.hidesForSinglePage = YES;
+        _pageControl.numberOfPages = [_dataSource numberOfItems];
+        _pageControl.currentPage = _currentIndex;
+        [self.view addSubview:_pageControl];
+    }
     
     _mediaControlView = (SHMediaControlView *)[SHUtil viewFromNib:@"SHMediaControlView" bundle:nil];
     _mediaControlView.delegate = self;
@@ -123,20 +139,9 @@
         self.currentIndex = self.nextIndex;
         [self updateMediaControls];
     }
+    _pageControl.currentPage = _currentIndex;
     self.nextIndex = 0;
 }
-
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    if(_theme.showPageControl) {
-        return [_dataSource numberOfItems];
-    }
-    return 0;
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    return _currentIndex;
-}
-
 
 #pragma mark - UIPageViewController helper methods
 
