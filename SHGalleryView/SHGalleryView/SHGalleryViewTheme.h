@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SHMediaControlTheme : NSObject
+@interface SHGalleryViewTheme : NSObject
+
+// the background color of the gallery view
+@property (nonatomic, strong) UIColor *backgroundColor;
+
+// following properties are for the media control
 
 //caption related colors
 @property (nonatomic, strong) UIColor *captionTitleColor ;

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 com.grevolution.shgalleryview. All rights reserved.
 //
 
-#import "SHMediaControlTheme.h"
+#import "SHGalleryViewTheme.h"
 
-@implementation SHMediaControlTheme
+@implementation SHGalleryViewTheme
 
 @end

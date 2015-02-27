@@ -97,7 +97,7 @@
                 <outlet property="viewGalleryControl" destination="uJq-mC-x3v" id="I15-8P-0UB"/>
                 <outlet property="viewMediaControl" destination="YTD-Sq-8vu" id="HVI-5X-RKV"/>
             </connections>
-            <point key="canvasLocation" x="381" y="262"/>
+            <point key="canvasLocation" x="285" y="238"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

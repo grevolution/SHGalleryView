@@ -19,14 +19,14 @@ typedef NS_ENUM(int, kViewSate) {
 };
 
 @protocol SHMediaControlViewDelegate;
-@class SHMediaControlTheme;
+@class SHGalleryViewTheme;
 @class SHMediaItem;
 
 @interface SHMediaControlView : UIView
 
 @property (nonatomic, weak) id<SHMediaControlViewDelegate> delegate;
 @property (nonatomic, getter = isControlShowing) BOOL controlShowing;
-@property (nonatomic, strong) SHMediaControlTheme *theme;
+@property (nonatomic, strong) SHGalleryViewTheme *theme;
 
 - (void)toggleDoneButtonState:(NSArray *)args;
 - (void)toggleMediaControlsState:(NSArray *)args;

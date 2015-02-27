@@ -7,7 +7,7 @@
 //
 
 #import "SHMediaControlView.h"
-#import "SHMediaControlTheme.h"
+#import "SHGalleryViewTheme.h"
 #import "SHMediaItem.h"
 
 #define TAG_PLAY 2324545
@@ -73,7 +73,7 @@
 
 #pragma mark - Theme methods
 
-- (void)setTheme:(SHMediaControlTheme *)theme {
+- (void)setTheme:(SHGalleryViewTheme *)theme {
     _theme = theme;
     [self applyThemeValues];
 }

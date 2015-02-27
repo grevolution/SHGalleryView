@@ -11,7 +11,7 @@
 #import "SHMediaItem.h"
 #import "SHImageMediaItemViewController.h"
 #import "SHMediaControlView.h"
-#import "SHMediaControlTheme.h"
+#import "SHGalleryViewTheme.h"
 
 @interface ViewController () <SHGalleryViewControllerDelegate, SHGalleryViewControllerDataSource>
 
@@ -25,7 +25,9 @@
 {
     [super viewDidLoad];
     
-    SHMediaControlTheme *theme = [[SHMediaControlTheme alloc] init];
+    SHGalleryViewTheme *theme = [[SHGalleryViewTheme alloc] init];
+    theme.backgroundColor = [UIColor orangeColor];
+    
     theme.captionTitleColor = [UIColor whiteColor];
     theme.timeLabelColor = [UIColor whiteColor];
     theme.captionBarBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
@@ -41,7 +43,6 @@
     theme.doneButtonImage = [UIImage imageNamed:@"btn_close"];
     theme.sliderThumbImage = [UIImage imageNamed:@"icn_scrubber"];
     
-    self.navigationController.navigationBarHidden = YES;
     _galleryView = [[SHGalleryViewController alloc] init];
     _galleryView.theme = theme;
     _galleryView.delegate = self;
@@ -82,7 +83,7 @@
 
 
 - (NSInteger)supportedOrientations {
-  return UIInterfaceOrientationMaskLandscape;
+  return UIInterfaceOrientationMaskAll;
 }
 
 - (void)galleryView:(SHGalleryViewController *)galleryView willDisplayItemAtIndex:(int)index {

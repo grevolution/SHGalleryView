@@ -12,6 +12,7 @@
 #import "SHMediaItem.h"
 #import "SHMediaControlView.h"
 #import "SHUtil.h"
+#import "SHGalleryViewTheme.h"
 
 @interface SHGalleryViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, SHMediaControlViewDelegate, UIGestureRecognizerDelegate>
 
@@ -39,7 +40,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor clearColor];
+    if(_theme && _theme.backgroundColor) {
+        self.view.backgroundColor = _theme.backgroundColor;
+    } else {
+        self.view.backgroundColor = [UIColor clearColor];
+    }
+
     _totalNumberOfItems = [_dataSource numberOfItems];
     _currentIndex = 0;
     
@@ -57,6 +63,7 @@
     _mediaControlView.delegate = self;
     _mediaControlView.theme = _theme;
     [self.view addSubview:_mediaControlView];
+    [SHUtil constrainViewEqual:_mediaControlView toParent:self.view];
     
     [self updateMediaControls];
     [self initializePageViewAtIndex:_currentIndex];

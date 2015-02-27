@@ -11,7 +11,7 @@
 @class SHMediaItem;
 @protocol SHGalleryViewControllerDataSource;
 @protocol SHGalleryViewControllerDelegate;
-@class SHMediaControlTheme;
+@class SHGalleryViewTheme;
 
 
 static NSString * const kNotificationMediaPlay = @"kNotificationMediaPlay";
@@ -24,7 +24,7 @@ static NSString * const kNotificationMediaDone = @"kNotificationMediaDone";
 
 @property (nonatomic, assign) id<SHGalleryViewControllerDataSource>dataSource;
 @property (nonatomic, assign) id<SHGalleryViewControllerDelegate>delegate;
-@property (nonatomic, strong) SHMediaControlTheme *theme;
+@property (nonatomic, strong) SHGalleryViewTheme *theme;
 
 - (void)reloadData;
 - (void)scrollToItemAtIndex:(int)index;
