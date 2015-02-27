@@ -28,12 +28,20 @@
     SHGalleryViewTheme *theme = [[SHGalleryViewTheme alloc] init];
     theme.backgroundColor = [UIColor orangeColor];
     
-    theme.captionTitleColor = [UIColor whiteColor];
-    theme.timeLabelColor = [UIColor whiteColor];
+//    theme.captionTitleColor = [UIColor whiteColor];
+//    theme.timeLabelColor = [UIColor whiteColor];
+
     theme.captionBarBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     
-    theme.captionTitleFont = [UIFont systemFontOfSize:15];
-    theme.timeLabelFont = [UIFont systemFontOfSize:11];
+//    theme.captionTitleFont = [UIFont systemFontOfSize:15];
+//    theme.timeLabelFont = [UIFont systemFontOfSize:11];
+    
+    theme.captionTitleAtributes = @{NSFontAttributeName : [UIFont systemFontOfSize:15],
+                                    NSForegroundColorAttributeName : [UIColor whiteColor]};
+
+    theme.timeLabelAtributes = @{NSFontAttributeName : [UIFont systemFontOfSize:11],
+                                    NSForegroundColorAttributeName : [UIColor whiteColor]};
+
     
     theme.sliderProgressColor = [UIColor redColor];
     theme.sliderTrackColor = [UIColor whiteColor];

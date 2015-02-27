@@ -241,8 +241,7 @@
   if([_delegate respondsToSelector:@selector(supportedOrientations)]) {
     return [_delegate supportedOrientations];
   }
-  
-	return UIInterfaceOrientationMaskAll;
+  return UIInterfaceOrientationMaskLandscape;
 }
 
 @end

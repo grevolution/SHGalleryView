@@ -67,7 +67,11 @@
 }
 
 - (void)updateCaptions:(SHMediaItem *)item {
-    _lblCaptionTitle.text = item.captionTitle;
+    if(_theme.captionTitleAtributes && item.captionTitle) {
+        _lblCaptionTitle.attributedText = [[NSAttributedString alloc] initWithString:item.captionTitle attributes:_theme.captionTitleAtributes];
+    } else {
+        _lblCaptionTitle.text = item.captionTitle;
+    }
     _lblCaptionTitle.hidden = (item.captionTitle.length == 0);
 }
 
@@ -78,12 +82,21 @@
     [self applyThemeValues];
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 - (void)applyThemeValues {
     _lblCaptionTitle.textColor = _theme.captionTitleColor;
     _lblCaptionTitle.font = _theme.captionTitleFont;
     
     _lblTime.textColor = _theme.timeLabelColor;
     _lblTime.font = _theme.timeLabelFont;
+    
+    if(_theme && _theme.timeLabelAtributes) {
+        _lblTime.attributedText = [[NSAttributedString alloc] initWithString:@"00:00" attributes:_theme.timeLabelAtributes];
+    } else {
+        _lblTime.text = @"00:00";
+    }
     
     _viewGalleryControl.backgroundColor = _theme.captionBarBackgroundColor;
     _viewMediaControl.backgroundColor = _theme.captionBarBackgroundColor;
@@ -95,6 +108,9 @@
     _slider.maximumTrackTintColor = _theme.sliderTrackColor;
     [_slider setThumbImage:_theme.sliderThumbImage forState:UIControlStateNormal];
 }
+
+#pragma GCC diagnostic pop
+
 
 - (void)changePlayPauseButtonState:(kPlayPauseButtonState)state {
 	if(state == kPlayPauseButtonStatePlay) {
@@ -112,7 +128,11 @@
 }
 
 - (void)setTimeLabel:(NSString *)time {
-    _lblTime.text = time;
+    if(_theme.timeLabelAtributes && time) {
+        _lblTime.attributedText = [[NSAttributedString alloc] initWithString:time attributes:_theme.timeLabelAtributes];
+    } else {
+        _lblTime.text = time;
+    }
 }
 
 
