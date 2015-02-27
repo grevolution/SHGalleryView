@@ -62,7 +62,7 @@
     _galleryView.theme = theme;
     _galleryView.delegate = self;
     _galleryView.dataSource = self;
-    _galleryView.showPageControl = YES;
+    _galleryView.showPageControl = NO;
 
 }
 
