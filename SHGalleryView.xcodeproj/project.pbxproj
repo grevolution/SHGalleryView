@@ -10,6 +10,7 @@
 		0B0A1268B79E4B0DA0191371 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 501D401B5E494F1DAE36070E /* libPods.a */; };
 		F2331C59199482B200C42A0B /* thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2331C58199482B200C42A0B /* thumb.jpg */; };
 		F2331C5A199482B200C42A0B /* thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2331C58199482B200C42A0B /* thumb.jpg */; };
+		F2351DE51AA0BB8C004F5924 /* EmbededViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2351DE41AA0BB8C004F5924 /* EmbededViewController.m */; };
 		F26F900D198F6A2000BC461E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26F900C198F6A2000BC461E /* Foundation.framework */; };
 		F26F900F198F6A2000BC461E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26F900E198F6A2000BC461E /* CoreGraphics.framework */; };
 		F26F9011198F6A2000BC461E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26F9010198F6A2000BC461E /* UIKit.framework */; };
@@ -101,6 +102,8 @@
 		501D401B5E494F1DAE36070E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA22770FE5DE3F787AF06581 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F2331C58199482B200C42A0B /* thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb.jpg; sourceTree = "<group>"; };
+		F2351DE31AA0BB8C004F5924 /* EmbededViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbededViewController.h; sourceTree = "<group>"; };
+		F2351DE41AA0BB8C004F5924 /* EmbededViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmbededViewController.m; sourceTree = "<group>"; };
 		F26F9009198F6A2000BC461E /* SHGalleryView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHGalleryView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26F900C198F6A2000BC461E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F26F900E198F6A2000BC461E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -238,6 +241,8 @@
 				F26F9021198F6A2000BC461E /* Main_iPad.storyboard */,
 				F26F9024198F6A2000BC461E /* ViewController.h */,
 				F26F9025198F6A2000BC461E /* ViewController.m */,
+				F2351DE31AA0BB8C004F5924 /* EmbededViewController.h */,
+				F2351DE41AA0BB8C004F5924 /* EmbededViewController.m */,
 				F26F9027198F6A2000BC461E /* Images.xcassets */,
 				F26F9013198F6A2000BC461E /* Supporting Files */,
 			);
@@ -497,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F26F9026198F6A2000BC461E /* ViewController.m in Sources */,
+				F2351DE51AA0BB8C004F5924 /* EmbededViewController.m in Sources */,
 				F26F905C19906E3500BC461E /* SHMediaItem.m in Sources */,
 				F26F901D198F6A2000BC461E /* AppDelegate.m in Sources */,
 				F26F9055198F6B4100BC461E /* SHMediaControlView.m in Sources */,

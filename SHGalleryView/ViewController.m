@@ -28,11 +28,13 @@
     SHGalleryViewTheme *theme = [[SHGalleryViewTheme alloc] init];
     theme.backgroundColor = [UIColor orangeColor];
     
+    //deprecated values
 //    theme.captionTitleColor = [UIColor whiteColor];
 //    theme.timeLabelColor = [UIColor whiteColor];
 
     theme.captionBarBackgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    
+
+    //deprecated values
 //    theme.captionTitleFont = [UIFont systemFontOfSize:15];
 //    theme.timeLabelFont = [UIFont systemFontOfSize:11];
     

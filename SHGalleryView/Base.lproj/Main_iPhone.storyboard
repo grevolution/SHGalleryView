@@ -42,11 +42,22 @@
                                     <action selector="buttonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XCy-QR-lJU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5a-On-GIS">
+                                <rect key="frame" x="78" y="260" width="161" height="30"/>
+                                <state key="normal" title="show as embeded view">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Pbm-uC-hvx" kind="push" id="Ein-xu-BBB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="tr5-WX-d5N" secondAttribute="centerY" constant="87" id="4MG-mp-elz"/>
                             <constraint firstAttribute="centerX" secondItem="tr5-WX-d5N" secondAttribute="centerX" id="Rlo-jc-iqU"/>
+                            <constraint firstAttribute="centerX" secondItem="q5a-On-GIS" secondAttribute="centerX" constant="1" id="k4h-Lf-V3u"/>
+                            <constraint firstAttribute="centerY" secondItem="q5a-On-GIS" secondAttribute="centerY" constant="-23" id="lUz-4h-loz"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -54,7 +65,68 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="220" y="175"/>
+            <point key="canvasLocation" x="-14" y="167"/>
+        </scene>
+        <!--Embeded View Controller-->
+        <scene sceneID="iI8-5O-iTb">
+            <objects>
+                <viewController id="Pbm-uC-hvx" customClass="EmbededViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LEP-MZ-Nbl"/>
+                        <viewControllerLayoutGuide type="bottom" id="iiq-h3-KS3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YXu-CM-nCK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egs-uR-iTc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="319" id="3e6-G4-cYA"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="iiA-G5-yHZ" kind="embed" identifier="segueGalleryView" id="CJu-br-VfI"/>
+                                </connections>
+                            </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is an embeded gallery" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wO-Gw-rr7">
+                                <rect key="frame" x="58" y="380" width="205" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Egs-uR-iTc" secondAttribute="trailing" id="43q-zl-iZT"/>
+                            <constraint firstItem="Egs-uR-iTc" firstAttribute="top" secondItem="LEP-MZ-Nbl" secondAttribute="bottom" id="HfG-Y9-utF"/>
+                            <constraint firstItem="Egs-uR-iTc" firstAttribute="leading" secondItem="YXu-CM-nCK" secondAttribute="leading" id="i71-vA-Ugw"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="Qwf-09-UKr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UfQ-YV-my3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444" y="380"/>
+        </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="hcY-xH-YOb">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="iiA-G5-yHZ" customClass="SHGalleryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DfQ-bf-uXN"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jdd-cO-J06"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0Lb-ya-OmB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="319"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t5B-fJ-s0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="903" y="379.5"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
