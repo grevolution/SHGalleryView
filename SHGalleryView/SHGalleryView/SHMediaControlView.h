@@ -28,6 +28,7 @@ typedef NS_ENUM(int, kViewSate) {
 @property (nonatomic, getter = isControlShowing) BOOL controlShowing;
 @property (nonatomic, strong) SHGalleryViewTheme *theme;
 @property (nonatomic) BOOL isDoneButtonForcedHidden;
+@property (nonatomic) BOOL showPageControl;
 
 - (void)toggleDoneButtonState:(NSArray *)args;
 - (void)toggleMediaControlsState:(NSArray *)args;

@@ -53,7 +53,6 @@
     theme.doneButtonImage = [UIImage imageNamed:@"btn_close"];
     theme.sliderThumbImage = [UIImage imageNamed:@"icn_scrubber"];
     
-    theme.showPageControl = NO;
     theme.pageControlBackgroundColor = [UIColor clearColor];
     theme.pageControlDotColor = [UIColor greenColor];
     theme.pageControlCurrentDotColor = [UIColor blueColor];
@@ -63,6 +62,8 @@
     _galleryView.theme = theme;
     _galleryView.delegate = self;
     _galleryView.dataSource = self;
+    _galleryView.showPageControl = YES;
+
 }
 
 - (void)didReceiveMemoryWarning

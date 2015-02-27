@@ -67,7 +67,7 @@
 	[[self view] addSubview:[_pageViewController view]];
 	[_pageViewController didMoveToParentViewController:self];
     
-    if(_theme.showPageControl){
+    if(_showPageControl){
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.hidesForSinglePage = YES;
         _pageControl.numberOfPages = [_dataSource numberOfItems];
@@ -78,6 +78,8 @@
     _mediaControlView = (SHMediaControlView *)[SHUtil viewFromNib:@"SHMediaControlView" bundle:nil];
     _mediaControlView.delegate = self;
     _mediaControlView.theme = _theme;
+    _mediaControlView.showPageControl = _showPageControl;
+    
     [self.view addSubview:_mediaControlView];
     [SHUtil constrainViewEqual:_mediaControlView toParent:self.view];
     [self triggerPageControlAppearance];
@@ -197,6 +199,7 @@
         viewController = (SHImageMediaItemViewController<SHGalleryViewControllerChild> *)[[SHImageMediaItemViewController alloc] init];
         viewController.mediaItem = item;
         viewController.pageIndex = index;
+        ((SHImageMediaItemViewController *)viewController).disablePinchAndZoomOnImage = _disablePinchAndZoomOnImages;
     }
     return viewController;
 }

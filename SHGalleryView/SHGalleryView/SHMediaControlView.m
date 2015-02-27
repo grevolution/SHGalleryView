@@ -78,7 +78,7 @@
     } else {
         _lblCaptionTitle.text = item.captionTitle;
     }
-    _viewGalleryControl.hidden = (item.captionTitle.length == 0) || _theme.showPageControl;
+    _viewGalleryControl.hidden = (item.captionTitle.length == 0) || _showPageControl;
 }
 
 #pragma mark - Theme methods
@@ -183,7 +183,7 @@
         if(!_galleryShowing){
             return;
         }
-        if(_theme.showPageControl){
+        if(_showPageControl){
             [self hideViewWithAlpha:_viewGalleryControl animated:NO];
         } else {
             [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
@@ -194,7 +194,7 @@
         if(_galleryShowing){
             return;
         }
-        if(!_theme.showPageControl) {
+        if(!_showPageControl) {
             [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
         }
         _galleryShowing = YES;
@@ -215,7 +215,7 @@
             [self hideViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         }
         if(_galleryShowing){
-            if(_theme.showPageControl){
+            if(_showPageControl){
                 [self hideViewWithAlpha:_viewGalleryControl animated:NO];
             } else {
                 [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
@@ -236,7 +236,7 @@
         }
         
         if(!_galleryShowing){
-            if(!_theme.showPageControl){
+            if(!_showPageControl){
                 [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
             }
         }

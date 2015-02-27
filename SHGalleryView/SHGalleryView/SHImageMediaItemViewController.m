@@ -50,6 +50,10 @@
     [_imageScrollView setMinimumZoomScale:minimumScale];
     [_imageScrollView setZoomScale:minimumScale];
     
+    if(_disablePinchAndZoomOnImage){
+        [_imageScrollView setMaximumZoomScale:minimumScale];
+    }
+    
 }
 
 #pragma mark UIScrollViewDelegate methods

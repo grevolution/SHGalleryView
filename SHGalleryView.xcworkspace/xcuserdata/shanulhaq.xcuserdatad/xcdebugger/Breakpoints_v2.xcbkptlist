@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHGalleryView/SHGalleryView/SHGalleryViewController.m"
-            timestampString = "446749693.288442"
+            timestampString = "446750209.71534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-tap:"
             landmarkType = "5">
          </BreakpointContent>

@@ -26,6 +26,12 @@ static NSString * const kNotificationMediaDone = @"kNotificationMediaDone";
 @property (nonatomic, assign) id<SHGalleryViewControllerDelegate>delegate;
 @property (nonatomic, strong) SHGalleryViewTheme *theme;
 
+/**
+ *  if this property is true, then instead of showing the title, only page control dots will be shown
+ */
+@property (nonatomic) BOOL showPageControl;
+@property (nonatomic) BOOL disablePinchAndZoomOnImages;
+
 - (void)reloadData;
 - (void)scrollToItemAtIndex:(int)index;
 
