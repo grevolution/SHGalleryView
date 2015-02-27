@@ -73,6 +73,10 @@
     [self.view addGestureRecognizer:_tapGesture];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    _mediaControlView.isDoneButtonForcedHidden = ![self isModal];    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -229,6 +233,16 @@
 		return NO;
 	}
 	return YES;
+}
+
+#pragma mark - Helper methods
+
+- (BOOL)isModal {
+    return self.presentingViewController.presentedViewController == self
+    || (self.navigationController.presentingViewController.presentedViewController != nil
+        && self.navigationController != nil
+        && self.navigationController.presentingViewController.presentedViewController == self.navigationController)
+    || [self.tabBarController.presentingViewController isKindOfClass:[UITabBarController class]];
 }
 
 #pragma mark - Orientation Methods

@@ -27,6 +27,7 @@ typedef NS_ENUM(int, kViewSate) {
 @property (nonatomic, weak) id<SHMediaControlViewDelegate> delegate;
 @property (nonatomic, getter = isControlShowing) BOOL controlShowing;
 @property (nonatomic, strong) SHGalleryViewTheme *theme;
+@property (nonatomic) BOOL isDoneButtonForcedHidden;
 
 - (void)toggleDoneButtonState:(NSArray *)args;
 - (void)toggleMediaControlsState:(NSArray *)args;

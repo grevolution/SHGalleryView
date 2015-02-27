@@ -138,13 +138,26 @@
 
 #pragma mark - Visibility methods
 
-- (void)toggleDoneButtonState:(NSArray *)args {
-    if([[args firstObject] intValue] == kViewStateHidden) {
-        [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
-        _doneShowing = NO;
+- (void)setIsDoneButtonForcedHidden:(BOOL)isDoneButtonForcedHidden {
+    _isDoneButtonForcedHidden = isDoneButtonForcedHidden;
+    if(_isDoneButtonForcedHidden){
+        _btnDone.hidden = YES;
     } else {
-        [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
-        _doneShowing = YES;
+        _btnDone.hidden = NO;
+    }
+}
+
+- (void)toggleDoneButtonState:(NSArray *)args {
+    if(!_isDoneButtonForcedHidden) {
+        if([[args firstObject] intValue] == kViewStateHidden) {
+            [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
+            _doneShowing = NO;
+        } else {
+            [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
+            _doneShowing = YES;
+        }
+    } else {
+        _btnDone.hidden = YES;
     }
 }
 
@@ -184,7 +197,7 @@
 
 - (void)toggleAllControls:(NSArray *)args {
     if([[args firstObject] intValue] == kViewStateHidden) {
-        if(_doneShowing) {
+        if(_doneShowing && !_isDoneButtonForcedHidden) {
             [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         }
         if(_mediaShowing){
@@ -196,7 +209,7 @@
         }
         _doneShowing = _mediaShowing = _galleryShowing = NO;
     } else {
-        if(!_doneShowing){
+        if(!_doneShowing && !_isDoneButtonForcedHidden){
             [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         }
         
