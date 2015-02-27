@@ -8,36 +8,88 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  `SHGalleryViewTheme` class is used to beauity and modify the look and feel of the `SHGalleryViewController`.
+ *  create and instance of `SHGalleryViewTheme` and pass it to the gallery view.
+ */
 @interface SHGalleryViewTheme : NSObject
 
-// the background color of the gallery view
+/**
+ *  set the background of gallery view
+ */
 @property (nonatomic, strong) UIColor *backgroundColor;
 
+/**
+ *  set the page control's currently selected dot color. (if you have set YES to showPageControl property of `SHGalleryViewController`)
+ */
 @property (nonatomic, strong) UIColor *pageControlCurrentDotColor;
+/**
+ *  set the page control's normal dot color.
+ */
 @property (nonatomic, strong) UIColor *pageControlDotColor;
+
+/**
+ *  set the page control's backgound color
+ */
 @property (nonatomic, strong) UIColor *pageControlBackgroundColor;
+
 
 // following properties are for the media control
 
-//caption title and time label attributes string attributes
+/**
+ *  media item's caption attributes for NSAttributedString
+ */
 @property (nonatomic, strong) NSDictionary *captionTitleAtributes;
+
+/**
+ *  media items's time label (for mediaItem type kMediaTypeVideo) attributes for NSAttributedString
+ */
 @property (nonatomic, strong) NSDictionary *timeLabelAtributes;
 
 //caption related colors
 
-@property (nonatomic, strong) UIColor *captionBarBackgroundColor ;
+/**
+ *  background color of the caption bar
+ */
+@property (nonatomic, strong) UIColor *captionBarBackgroundColor;
 
 //slider related colors
+
+/**
+ *  slider/time bar track color (media type kMediaTypeVideo)
+ */
 @property (nonatomic, strong) UIColor *sliderTrackColor ;
+
+/**
+ *  slider/time bar progress color (media type kMediaTypeVideo)
+ */
 @property (nonatomic, strong) UIColor *sliderProgressColor ;
 
-//button images
-@property (nonatomic, strong) UIImage *playButtonImage ;
-@property (nonatomic, strong) UIImage *pauseButtonImage ;
-@property (nonatomic, strong) UIImage *doneButtonImage ;
+/**
+ *  slider thumb image
+ */
 @property (nonatomic, strong) UIImage *sliderThumbImage ;
 
-//caption fonts
+
+//button images
+
+/**
+ *  play button image
+ */
+@property (nonatomic, strong) UIImage *playButtonImage ;
+
+/**
+ *  pause button image
+ */
+@property (nonatomic, strong) UIImage *pauseButtonImage ;
+
+/**
+ *  done button image
+ */
+@property (nonatomic, strong) UIImage *doneButtonImage ;
+
+
+////// Deprecated Items /////////
 
 /**
  *  @deprecated this property is deprecated, Use `captionTitleAttributes` instead.
