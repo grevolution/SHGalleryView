@@ -99,8 +99,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0089E50EBBBE92CFD5D40406 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		501D401B5E494F1DAE36070E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3018DECF9E0438D9D62F8E8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		CA22770FE5DE3F787AF06581 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F2331C58199482B200C42A0B /* thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb.jpg; sourceTree = "<group>"; };
 		F26F9009198F6A2000BC461E /* SHGalleryView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHGalleryView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26F900C198F6A2000BC461E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +189,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B00E090CBAF84442081D592 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA22770FE5DE3F787AF06581 /* Pods.debug.xcconfig */,
+				0089E50EBBBE92CFD5D40406 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F26F9000198F6A2000BC461E = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +205,7 @@
 				F26F9034198F6A2000BC461E /* SHGalleryViewTests */,
 				F26F900B198F6A2000BC461E /* Frameworks */,
 				F26F900A198F6A2000BC461E /* Products */,
-				B3018DECF9E0438D9D62F8E8 /* Pods.xcconfig */,
+				3B00E090CBAF84442081D592 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -467,7 +477,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BEFE482716F748C498C4CC3A /* Check Pods Manifest.lock */ = {
@@ -640,13 +650,14 @@
 		};
 		F26F903F198F6A2000BC461E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3018DECF9E0438D9D62F8E8 /* Pods.xcconfig */;
+			baseConfigurationReference = CA22770FE5DE3F787AF06581 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SHGalleryView/SHGalleryView-Prefix.pch";
 				INFOPLIST_FILE = "SHGalleryView/SHGalleryView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -654,13 +665,14 @@
 		};
 		F26F9040198F6A2000BC461E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3018DECF9E0438D9D62F8E8 /* Pods.xcconfig */;
+			baseConfigurationReference = 0089E50EBBBE92CFD5D40406 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SHGalleryView/SHGalleryView-Prefix.pch";
 				INFOPLIST_FILE = "SHGalleryView/SHGalleryView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

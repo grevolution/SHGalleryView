@@ -62,7 +62,7 @@
     return 5;
 }
 
-- (SHMediaItem *)mediaItemIndex:(int)index {
+- (SHMediaItem *)mediaItemIndex:(NSInteger)index {
     
     if(index % 2 == 0){
         SHMediaItem *item = [[SHMediaItem alloc] init];
@@ -78,6 +78,11 @@
         item.mediaThumbnailImagePath = [[[NSBundle mainBundle] URLForResource:@"thumb" withExtension:@"jpg"] absoluteString];
         return item;
     }
+}
+
+
+- (NSInteger)supportedOrientations {
+  return UIInterfaceOrientationMaskLandscape;
 }
 
 - (void)galleryView:(SHGalleryViewController *)galleryView willDisplayItemAtIndex:(int)index {

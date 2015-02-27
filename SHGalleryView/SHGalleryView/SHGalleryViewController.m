@@ -18,9 +18,9 @@
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) SHMediaControlView *mediaControlView;
 
-@property (nonatomic) int totalNumberOfItems;
-@property (nonatomic) int currentIndex;
-@property (nonatomic) int nextIndex;
+@property (nonatomic) NSInteger totalNumberOfItems;
+@property (nonatomic) NSInteger currentIndex;
+@property (nonatomic) NSInteger nextIndex;
 
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 
@@ -102,7 +102,7 @@
 
 #pragma mark - UIPageViewController helper methods
 
-- (void)initializePageViewAtIndex:(int)index {
+- (void)initializePageViewAtIndex:(NSInteger)index {
     UIViewController *initialViewController = [self viewControllerAtIndex:index];
     if(nil != initialViewController) {
         NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
@@ -130,7 +130,7 @@
     [self updateMediaControls];
 }
 
-- (UIViewController<SHGalleryViewControllerChild> *)viewControllerAtIndex:(int)index {
+- (UIViewController<SHGalleryViewControllerChild> *)viewControllerAtIndex:(NSInteger)index {
     if(_totalNumberOfItems == 0){
         return nil;
     }
@@ -231,7 +231,11 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-	return UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+  if([_delegate respondsToSelector:@selector(supportedOrientations)]) {
+    return [_delegate supportedOrientations];
+  }
+  
+	return UIInterfaceOrientationMaskAll;
 }
 
 @end

@@ -35,12 +35,13 @@ static NSString * const kNotificationMediaDone = @"kNotificationMediaDone";
 
 @required
 - (CGFloat)numberOfItems;
-- (SHMediaItem *)mediaItemIndex:(int)index;
+- (SHMediaItem *)mediaItemIndex:(NSInteger)index;
 
 @end
 
 @protocol SHGalleryViewControllerDelegate <NSObject>
 
+- (NSInteger)supportedOrientations;
 - (void)galleryView:(SHGalleryViewController *)galleryView willDisplayItemAtIndex:(int)index;
 - (void)galleryView:(SHGalleryViewController *)galleryView didDisplayItemAtIndex:(int)index;
 - (void)doneClicked;

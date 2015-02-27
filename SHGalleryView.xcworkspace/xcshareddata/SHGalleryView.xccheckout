@@ -10,29 +10,29 @@
 	<string>SHGalleryView</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>530D0FCA-0F9C-4049-BE52-649BBD15D7A8</key>
+		<key>47C26619CD98CED4C356154A7FA4601C3FB302A4</key>
 		<string>ssh://github.com/grevolution/SHGalleryView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SHGalleryView.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>530D0FCA-0F9C-4049-BE52-649BBD15D7A8</key>
+		<key>47C26619CD98CED4C356154A7FA4601C3FB302A4</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/grevolution/SHGalleryView.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>530D0FCA-0F9C-4049-BE52-649BBD15D7A8</string>
+	<string>47C26619CD98CED4C356154A7FA4601C3FB302A4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>530D0FCA-0F9C-4049-BE52-649BBD15D7A8</string>
+			<string>47C26619CD98CED4C356154A7FA4601C3FB302A4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SHGalleryView</string>
 		</dict>
