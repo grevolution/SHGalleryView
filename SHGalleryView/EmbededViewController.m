@@ -36,6 +36,12 @@
         theme.sliderProgressColor = [UIColor redColor];
         theme.sliderTrackColor = [UIColor whiteColor];
         
+        theme.showPageControl = YES;
+        theme.pageControlBackgroundColor = [UIColor clearColor];
+        theme.pageControlDotColor = [UIColor greenColor];
+        theme.pageControlCurrentDotColor = [UIColor blueColor];
+
+        
         theme.playButtonImage = [UIImage imageNamed:@"btn_player_play"];
         theme.pauseButtonImage = [UIImage imageNamed:@"btn_pause"];
         theme.doneButtonImage = [UIImage imageNamed:@"btn_close"];

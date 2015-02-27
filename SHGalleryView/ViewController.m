@@ -53,6 +53,12 @@
     theme.doneButtonImage = [UIImage imageNamed:@"btn_close"];
     theme.sliderThumbImage = [UIImage imageNamed:@"icn_scrubber"];
     
+    theme.showPageControl = NO;
+    theme.pageControlBackgroundColor = [UIColor clearColor];
+    theme.pageControlDotColor = [UIColor greenColor];
+    theme.pageControlCurrentDotColor = [UIColor blueColor];
+    
+    
     _galleryView = [[SHGalleryViewController alloc] init];
     _galleryView.theme = theme;
     _galleryView.delegate = self;

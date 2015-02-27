@@ -64,6 +64,8 @@
     _mediaControlView.theme = _theme;
     [self.view addSubview:_mediaControlView];
     [SHUtil constrainViewEqual:_mediaControlView toParent:self.view];
+    [self triggerPageControlAppearance];
+    
     
     [self updateMediaControls];
     [self initializePageViewAtIndex:_currentIndex];
@@ -71,6 +73,19 @@
     _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [_tapGesture setDelegate:self];
     [self.view addGestureRecognizer:_tapGesture];
+}
+
+- (void)triggerPageControlAppearance {
+    UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[self class], nil];
+    if(_theme.pageControlDotColor) {
+        pageControl.pageIndicatorTintColor = _theme.pageControlDotColor;
+    }
+    if(_theme.pageControlCurrentDotColor){
+        pageControl.currentPageIndicatorTintColor = _theme.pageControlCurrentDotColor;
+    }
+    if(_theme.pageControlBackgroundColor) {
+        pageControl.backgroundColor = _theme.pageControlBackgroundColor;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,6 +125,18 @@
     }
     self.nextIndex = 0;
 }
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    if(_theme.showPageControl) {
+        return [_dataSource numberOfItems];
+    }
+    return 0;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    return _currentIndex;
+}
+
 
 #pragma mark - UIPageViewController helper methods
 

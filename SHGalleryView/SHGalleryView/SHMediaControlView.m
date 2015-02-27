@@ -72,7 +72,7 @@
     } else {
         _lblCaptionTitle.text = item.captionTitle;
     }
-    _lblCaptionTitle.hidden = (item.captionTitle.length == 0);
+    _viewGalleryControl.hidden = (item.captionTitle.length == 0) || _theme.showPageControl;
 }
 
 #pragma mark - Theme methods
@@ -138,26 +138,19 @@
 
 #pragma mark - Visibility methods
 
-- (void)setIsDoneButtonForcedHidden:(BOOL)isDoneButtonForcedHidden {
-    _isDoneButtonForcedHidden = isDoneButtonForcedHidden;
-    if(_isDoneButtonForcedHidden){
-        _btnDone.hidden = YES;
-    } else {
-        _btnDone.hidden = NO;
-    }
-}
-
 - (void)toggleDoneButtonState:(NSArray *)args {
-    if(!_isDoneButtonForcedHidden) {
-        if([[args firstObject] intValue] == kViewStateHidden) {
-            [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
-            _doneShowing = NO;
+    if([[args firstObject] intValue] == kViewStateHidden) {
+        if(_isDoneButtonForcedHidden){
+            [self hideViewWithAlpha:_btnDone animated:NO];
         } else {
-            [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
-            _doneShowing = YES;
+            [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         }
+        _doneShowing = NO;
     } else {
-        _btnDone.hidden = YES;
+        if(!_isDoneButtonForcedHidden) {
+            [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
+        }
+        _doneShowing = YES;
     }
 }
 
@@ -184,33 +177,51 @@
         if(!_galleryShowing){
             return;
         }
-        [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+        if(_theme.showPageControl){
+            [self hideViewWithAlpha:_viewGalleryControl animated:NO];
+        } else {
+            [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+        }
+
         _galleryShowing = NO;
     } else {
         if(_galleryShowing){
             return;
         }
-        [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+        if(!_theme.showPageControl) {
+            [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+        }
         _galleryShowing = YES;
     }
 }
 
 - (void)toggleAllControls:(NSArray *)args {
     if([[args firstObject] intValue] == kViewStateHidden) {
-        if(_doneShowing && !_isDoneButtonForcedHidden) {
-            [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
+        if(_doneShowing) {
+            if(_isDoneButtonForcedHidden){
+                [self hideViewWithAlpha:_btnDone animated:NO];
+            } else {
+                [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
+            }
         }
         if(_mediaShowing){
             [self hideViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
             [self hideViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         }
         if(_galleryShowing){
-            [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+            if(_theme.showPageControl){
+                [self hideViewWithAlpha:_viewGalleryControl animated:NO];
+            } else {
+                [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+            }
+
         }
         _doneShowing = _mediaShowing = _galleryShowing = NO;
     } else {
-        if(!_doneShowing && !_isDoneButtonForcedHidden){
-            [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
+        if(!_doneShowing){
+            if(!_isDoneButtonForcedHidden) {
+                [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
+            }
         }
         
         if(!_mediaShowing){
@@ -219,7 +230,9 @@
         }
         
         if(!_galleryShowing){
-            [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+            if(!_theme.showPageControl){
+                [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
+            }
         }
         _doneShowing = _mediaShowing = _galleryShowing = YES;
     }
@@ -234,9 +247,9 @@
 }
 
 - (void)hideViewWithAlpha:(UIView *)view animated:(BOOL)animated {
-    view.hidden = NO;
-    view.alpha = 1.0;
     if(animated) {
+        view.hidden = NO;
+        view.alpha = 1.0;
         [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             view.alpha = 0;
         } completion:^(BOOL finished) {
@@ -248,9 +261,9 @@
 }
 
 - (void)showViewWithAlpha:(UIView *)view animated:(BOOL)animated {
-    view.hidden = NO;
-    view.alpha = 0;
     if(animated) {
+        view.hidden = NO;
+        view.alpha = 0;
         [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             view.alpha = 1.0;
         } completion:nil];

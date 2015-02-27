@@ -13,6 +13,14 @@
 // the background color of the gallery view
 @property (nonatomic, strong) UIColor *backgroundColor;
 
+/**
+ *  if this property is true, then instead of showing the title, only page control dots will be shown
+ */
+@property (nonatomic) BOOL showPageControl;
+@property (nonatomic, strong) UIColor *pageControlCurrentDotColor;
+@property (nonatomic, strong) UIColor *pageControlDotColor;
+@property (nonatomic, strong) UIColor *pageControlBackgroundColor;
+
 // following properties are for the media control
 
 //caption title and time label attributes string attributes
