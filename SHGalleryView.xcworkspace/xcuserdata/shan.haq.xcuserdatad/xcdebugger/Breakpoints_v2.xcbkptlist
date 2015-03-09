@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SHGalleryView/SHGalleryView/SHGalleryView.m"
-            timestampString = "447562235.710333"
+            timestampString = "447564630.655302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "-layoutSubviews"
             landmarkType = "5">
          </BreakpointContent>

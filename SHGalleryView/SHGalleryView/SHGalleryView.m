@@ -51,10 +51,8 @@
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                         options:nil];
 
-    if (_totalNumberOfItems > 0) {
-        _pageViewController.dataSource = self;
-        _pageViewController.delegate = self;
-    }
+    _pageViewController.dataSource = self;
+    _pageViewController.delegate = self;
 
     [self addSubview:[_pageViewController view]];
 
@@ -148,6 +146,7 @@
 - (void)reloadData {
     _totalNumberOfItems = [_dataSource numberOfItems];
     _currentIndex = 0;
+    _pageControl.numberOfPages = [_dataSource numberOfItems];
     [self initializePageViewAtIndex:_currentIndex];
     [self updateMediaControls];
 }
