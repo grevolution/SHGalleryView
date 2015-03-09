@@ -242,6 +242,13 @@
     }
 }
 
+#pragma mark - Property methods
+
+- (void)setIsDoneButtonForcedHidden:(BOOL)isDoneButtonForcedHidden {
+    _isDoneButtonForcedHidden = isDoneButtonForcedHidden;
+    _mediaControlView.isDoneButtonForcedHidden = _isDoneButtonForcedHidden;
+}
+
 #pragma mark - UITapGestureRecognizer methods
 
 - (void)tap:(UITapGestureRecognizer *)gestureRecognizer;

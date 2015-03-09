@@ -37,6 +37,17 @@
     [galleryView scrollToItemAtIndex:index];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    SHGalleryView *galleryView = (SHGalleryView *)self.view;
+    galleryView.isDoneButtonForcedHidden = ![self isModal];
+}
+
+#pragma mark - Helper methods
+
+- (BOOL)isModal {
+    return self.presentingViewController.presentedViewController == self || (self.navigationController.presentingViewController.presentedViewController != nil && self.navigationController != nil && self.navigationController.presentingViewController.presentedViewController == self.navigationController) || [self.tabBarController.presentingViewController isKindOfClass:[UITabBarController class]];
+}
+
 #pragma mark - Orientation Methods
 
 - (BOOL)shouldAutorotate {
