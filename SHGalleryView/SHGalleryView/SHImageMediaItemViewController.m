@@ -8,9 +8,9 @@
 
 #import "SHImageMediaItemViewController.h"
 #import "SHMediaControlView.h"
-#import "SHGalleryViewController.h"
 #import "SHMediaItem.h"
 #import <UIImageView+AFNetworking.h>
+#import "SHGalleryViewControllerChild.h"
 
 #define ZOOM_VIEW_TAG 100
 
@@ -26,8 +26,7 @@
 @synthesize pageIndex;
 @synthesize mediaItem;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -38,22 +37,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
-    [_imageView setImageWithURL:[NSURL URLWithString:self.mediaItem.resourcePath] placeholderImage:nil];    
+    [_imageView setImageWithURL:[NSURL URLWithString:self.mediaItem.resourcePath] placeholderImage:nil];
     [_imageScrollView setDelegate:self];
     [_imageScrollView setBouncesZoom:YES];
-    
+
     [_imageView setTag:ZOOM_VIEW_TAG];
     [_imageScrollView setContentSize:[_imageView frame].size];
-    
+
     // calculate minimum scale to perfectly fit image width, and begin at that scale
-    float minimumScale = [_imageScrollView frame].size.width  / [_imageView frame].size.width;
+    float minimumScale = [_imageScrollView frame].size.width / [_imageView frame].size.width;
     [_imageScrollView setMinimumZoomScale:minimumScale];
     [_imageScrollView setZoomScale:minimumScale];
-    
-    if(_disablePinchAndZoomOnImage){
+
+    if (_disablePinchAndZoomOnImage) {
         [_imageScrollView setMaximumZoomScale:minimumScale];
     }
-    
 }
 
 #pragma mark UIScrollViewDelegate methods

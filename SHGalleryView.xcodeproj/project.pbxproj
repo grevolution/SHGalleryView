@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B0A1268B79E4B0DA0191371 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 501D401B5E494F1DAE36070E /* libPods.a */; };
+		0BF47E691AAD1347008519FF /* SHGalleryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF47E681AAD1347008519FF /* SHGalleryView.m */; };
+		0BF47E6F1AAD1F61008519FF /* SHGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF47E6E1AAD1F61008519FF /* SHGalleryViewController.m */; };
 		F2331C59199482B200C42A0B /* thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2331C58199482B200C42A0B /* thumb.jpg */; };
 		F2331C5A199482B200C42A0B /* thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2331C58199482B200C42A0B /* thumb.jpg */; };
 		F2351DE51AA0BB8C004F5924 /* EmbededViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2351DE41AA0BB8C004F5924 /* EmbededViewController.m */; };
@@ -26,8 +28,6 @@
 		F26F9031198F6A2000BC461E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26F9010198F6A2000BC461E /* UIKit.framework */; };
 		F26F9039198F6A2000BC461E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F26F9037198F6A2000BC461E /* InfoPlist.strings */; };
 		F26F903B198F6A2000BC461E /* SHGalleryViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F26F903A198F6A2000BC461E /* SHGalleryViewTests.m */; };
-		F26F9048198F6A9E00BC461E /* SHGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26F9046198F6A9E00BC461E /* SHGalleryViewController.m */; };
-		F26F9049198F6A9E00BC461E /* SHGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26F9046198F6A9E00BC461E /* SHGalleryViewController.m */; };
 		F26F904F198F6B0B00BC461E /* SHImageMediaItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26F904D198F6B0B00BC461E /* SHImageMediaItemViewController.m */; };
 		F26F9050198F6B0B00BC461E /* SHImageMediaItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26F904D198F6B0B00BC461E /* SHImageMediaItemViewController.m */; };
 		F26F9051198F6B0B00BC461E /* SHImageMediaItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26F904E198F6B0B00BC461E /* SHImageMediaItemViewController.xib */; };
@@ -99,6 +99,13 @@
 
 /* Begin PBXFileReference section */
 		0089E50EBBBE92CFD5D40406 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		0BF47E671AAD1347008519FF /* SHGalleryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHGalleryView.h; sourceTree = "<group>"; };
+		0BF47E681AAD1347008519FF /* SHGalleryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHGalleryView.m; sourceTree = "<group>"; };
+		0BF47E6A1AAD14F9008519FF /* SHGalleryViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHGalleryViewControllerDelegate.h; sourceTree = "<group>"; };
+		0BF47E6B1AAD1509008519FF /* SHGalleryViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHGalleryViewControllerDataSource.h; sourceTree = "<group>"; };
+		0BF47E6C1AAD151F008519FF /* SHGalleryViewControllerChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHGalleryViewControllerChild.h; sourceTree = "<group>"; };
+		0BF47E6D1AAD1F61008519FF /* SHGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHGalleryViewController.h; sourceTree = "<group>"; };
+		0BF47E6E1AAD1F61008519FF /* SHGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHGalleryViewController.m; sourceTree = "<group>"; };
 		501D401B5E494F1DAE36070E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA22770FE5DE3F787AF06581 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F2331C58199482B200C42A0B /* thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb.jpg; sourceTree = "<group>"; };
@@ -124,8 +131,6 @@
 		F26F9036198F6A2000BC461E /* SHGalleryViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SHGalleryViewTests-Info.plist"; sourceTree = "<group>"; };
 		F26F9038198F6A2000BC461E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F26F903A198F6A2000BC461E /* SHGalleryViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHGalleryViewTests.m; sourceTree = "<group>"; };
-		F26F9045198F6A9E00BC461E /* SHGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHGalleryViewController.h; sourceTree = "<group>"; };
-		F26F9046198F6A9E00BC461E /* SHGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHGalleryViewController.m; sourceTree = "<group>"; };
 		F26F904C198F6B0B00BC461E /* SHImageMediaItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHImageMediaItemViewController.h; sourceTree = "<group>"; };
 		F26F904D198F6B0B00BC461E /* SHImageMediaItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHImageMediaItemViewController.m; sourceTree = "<group>"; };
 		F26F904E198F6B0B00BC461E /* SHImageMediaItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SHImageMediaItemViewController.xib; sourceTree = "<group>"; };
@@ -301,8 +306,6 @@
 		F26F9044198F6A3400BC461E /* SHGalleryView */ = {
 			isa = PBXGroup;
 			children = (
-				F26F9045198F6A9E00BC461E /* SHGalleryViewController.h */,
-				F26F9046198F6A9E00BC461E /* SHGalleryViewController.m */,
 				F26F904C198F6B0B00BC461E /* SHImageMediaItemViewController.h */,
 				F26F904D198F6B0B00BC461E /* SHImageMediaItemViewController.m */,
 				F26F904E198F6B0B00BC461E /* SHImageMediaItemViewController.xib */,
@@ -318,6 +321,13 @@
 				F26F908B1990AE3A00BC461E /* SHUtil.m */,
 				F26F90A61990D2BA00BC461E /* SHGalleryViewTheme.h */,
 				F26F90A71990D2BA00BC461E /* SHGalleryViewTheme.m */,
+				0BF47E671AAD1347008519FF /* SHGalleryView.h */,
+				0BF47E681AAD1347008519FF /* SHGalleryView.m */,
+				0BF47E6A1AAD14F9008519FF /* SHGalleryViewControllerDelegate.h */,
+				0BF47E6B1AAD1509008519FF /* SHGalleryViewControllerDataSource.h */,
+				0BF47E6C1AAD151F008519FF /* SHGalleryViewControllerChild.h */,
+				0BF47E6D1AAD1F61008519FF /* SHGalleryViewController.h */,
+				0BF47E6E1AAD1F61008519FF /* SHGalleryViewController.m */,
 			);
 			path = SHGalleryView;
 			sourceTree = "<group>";
@@ -501,13 +511,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BF47E691AAD1347008519FF /* SHGalleryView.m in Sources */,
 				F26F9026198F6A2000BC461E /* ViewController.m in Sources */,
 				F2351DE51AA0BB8C004F5924 /* EmbededViewController.m in Sources */,
 				F26F905C19906E3500BC461E /* SHMediaItem.m in Sources */,
 				F26F901D198F6A2000BC461E /* AppDelegate.m in Sources */,
 				F26F9055198F6B4100BC461E /* SHMediaControlView.m in Sources */,
 				F26F904F198F6B0B00BC461E /* SHImageMediaItemViewController.m in Sources */,
-				F26F9048198F6A9E00BC461E /* SHGalleryViewController.m in Sources */,
+				0BF47E6F1AAD1F61008519FF /* SHGalleryViewController.m in Sources */,
 				F26F90651990702E00BC461E /* SHVideoMediaItemViewController.m in Sources */,
 				F26F90A81990D2BA00BC461E /* SHGalleryViewTheme.m in Sources */,
 				F26F9019198F6A2000BC461E /* main.m in Sources */,
@@ -520,7 +531,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F26F90661990702E00BC461E /* SHVideoMediaItemViewController.m in Sources */,
-				F26F9049198F6A9E00BC461E /* SHGalleryViewController.m in Sources */,
 				F26F903B198F6A2000BC461E /* SHGalleryViewTests.m in Sources */,
 				F26F9056198F6B4100BC461E /* SHMediaControlView.m in Sources */,
 				F26F9050198F6B0B00BC461E /* SHImageMediaItemViewController.m in Sources */,
@@ -578,6 +588,7 @@
 /* Begin XCBuildConfiguration section */
 		F26F903C198F6A2000BC461E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA22770FE5DE3F787AF06581 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -617,6 +628,7 @@
 		};
 		F26F903D198F6A2000BC461E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0089E50EBBBE92CFD5D40406 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -680,6 +692,7 @@
 		};
 		F26F9042198F6A2000BC461E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA22770FE5DE3F787AF06581 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SHGalleryView.app/SHGalleryView";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -702,6 +715,7 @@
 		};
 		F26F9043198F6A2000BC461E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0089E50EBBBE92CFD5D40406 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SHGalleryView.app/SHGalleryView";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -1,5 +1,5 @@
 //
-//  SHGalleryController.h
+//  SHGalleryView.h
 //  SHGalleryView
 //
 //  Created by Shan Ul Haq on 9/3/15.
@@ -7,12 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SHGalleryViewControllerDataSource.h"
+#import "SHGalleryViewControllerDelegate.h"
 
 @class SHGalleryViewTheme;
-@protocol SHGalleryViewControllerDelegate;
-@protocol SHGalleryViewControllerDataSource;
 
-@interface SHGalleryViewController : UIViewController
+static NSString *const kNotificationMediaPlay = @"kNotificationMediaPlay";
+static NSString *const kNotificationMediaPause = @"kNotificationMediaPause";
+static NSString *const kNotificationMediaStop = @"kNotificationMediaStop";
+static NSString *const kNotificationMediaSliderValueChanged = @"kNotificationMediaSliderValueChanged";
+static NSString *const kNotificationMediaDone = @"kNotificationMediaDone";
+
+@interface SHGalleryView : UIView
 
 /**
  *  data source for `SHGalleryViewController`
@@ -41,6 +47,11 @@
 @property (nonatomic) BOOL disablePinchAndZoomOnImages;
 
 /**
+ *  hides the done button forcefully, set this to YES for the embedded views.
+ */
+@property (nonatomic) BOOL isDoneButtonForcedHidden;
+
+/**
  *  call this method to reload your data source
  */
 - (void)reloadData;
@@ -51,5 +62,10 @@
  *  @param index the index to which you want to scroll.
  */
 - (void)scrollToItemAtIndex:(int)index;
+
+/**
+ *  initialize the gallery view
+ */
+- (void)setupGalleryView;
 
 @end
