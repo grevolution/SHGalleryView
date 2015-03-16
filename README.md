@@ -8,6 +8,14 @@ This is a Page View Controller based Gallery for Images and Videos which you can
 
 ##Changelog
 
+###0.0.9 (March 17, 2015)
+
+Changes:
+
+- done some refactoring and moved all the view code inside SHGalleryView from SHGalleryViewController. Now you can just use the SHGalleryView class to show gallery view. 
+- SHGalleryViewController is still there for backward compatibility and to show the Gallery modally.
+
+
 ###0.0.8 (Feb 28, 2015)
 
 Features:
