@@ -61,4 +61,10 @@
     return UIInterfaceOrientationMaskLandscape;
 }
 
+#pragma mark- Status Bar
+
+- (BOOL)prefersStatusBarHidden {
+    return self.hideStatusBar;
+}
+
 @end
