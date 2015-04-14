@@ -116,6 +116,10 @@
     willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     UIViewController<SHGalleryViewControllerChild> *controller = [pendingViewControllers firstObject];
     self.nextIndex = controller.pageIndex;
+    
+    if ([self.delegate respondsToSelector:@selector(galleryView:willDisplayItemAtIndex:)]) {
+        [self.delegate galleryView:self willDisplayItemAtIndex:(int)self.nextIndex];
+    }
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
@@ -125,7 +129,12 @@
     if (completed) {
         self.currentIndex = self.nextIndex;
         [self updateMediaControls];
+        
+        if ([self.delegate respondsToSelector:@selector(galleryView:didDisplayItemAtIndex:)]) {
+            [self.delegate galleryView:self didDisplayItemAtIndex:(int)self.currentIndex];
+        }
     }
+    
     _pageControl.currentPage = _currentIndex;
     self.nextIndex = 0;
 }
