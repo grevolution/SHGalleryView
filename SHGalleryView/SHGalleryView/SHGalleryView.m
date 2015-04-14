@@ -286,14 +286,24 @@
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
     _totalNumberOfItems = [_dataSource numberOfItems];
     [[_pageViewController view] setFrame:[self bounds]];
-    [SHUtil constrainViewEqual:_pageViewController.view toParent:self];
-    [SHUtil constrainViewEqual:_mediaControlView toParent:self];
+
     CGSize recommendedSize = [_pageControl sizeForNumberOfPages:[_dataSource numberOfItems]];
     CGFloat x = CGRectGetMidX(_pageViewController.view.bounds);
     _pageControl.frame = CGRectMake(0, _pageViewController.view.bounds.size.height - recommendedSize.height, recommendedSize.width, recommendedSize.height);
     _pageControl.center = CGPointMake(x, _pageControl.center.y);
+    
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)updateConstraints {
+    [super updateConstraints];
+    
+    [SHUtil constrainViewEqual:_pageViewController.view toParent:self];
+    [SHUtil constrainViewEqual:_mediaControlView toParent:self];
 }
 
 @end

@@ -52,4 +52,9 @@
  */
 - (void)scrollToItemAtIndex:(int)index;
 
+/**
+ *  set this property if you want to hide the status bar.
+ */
+@property (nonatomic) BOOL hideStatusBar;
+
 @end
