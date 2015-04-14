@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SHGalleryView"
-  s.version      = "0.0.9"
+  s.version      = "0.1.0"
   s.summary      = "An iOS Gallery View for Images and Videos"
 
   s.description  = <<-DESC
