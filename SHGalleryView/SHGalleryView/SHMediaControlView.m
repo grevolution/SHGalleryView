@@ -15,16 +15,16 @@
 
 #define ANIMATION_DURATION 0.2
 
-@interface SHMediaControlView()
+@interface SHMediaControlView ()
 
-//done button
+// done button
 @property (weak, nonatomic) IBOutlet UIButton *btnDone;
 
-//gallery control objects
+// gallery control objects
 @property (weak, nonatomic) IBOutlet UIView *viewGalleryControl;
 @property (weak, nonatomic) IBOutlet UILabel *lblCaptionTitle;
 
-//media control objects
+// media control objects
 @property (weak, nonatomic) IBOutlet UIView *viewMediaControl;
 @property (weak, nonatomic) IBOutlet UIButton *btnPlay;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
@@ -38,8 +38,7 @@
     BOOL _galleryShowing;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -57,7 +56,6 @@
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor clearColor];
     [self applyDefaultValues];
-    
 }
 
 - (void)applyDefaultValues {
@@ -68,13 +66,14 @@
     _galleryShowing = YES;
     _mediaShowing = YES;
     _doneShowing = YES;
-    
+
     [self applyThemeValues];
 }
 
 - (void)updateCaptions:(SHMediaItem *)item {
-    if(_theme.captionTitleAtributes && item.captionTitle) {
-        _lblCaptionTitle.attributedText = [[NSAttributedString alloc] initWithString:item.captionTitle attributes:_theme.captionTitleAtributes];
+    if (_theme.captionTitleAtributes && item.captionTitle) {
+        _lblCaptionTitle.attributedText =
+            [[NSAttributedString alloc] initWithString:item.captionTitle attributes:_theme.captionTitleAtributes];
     } else {
         _lblCaptionTitle.text = item.captionTitle;
     }
@@ -94,22 +93,23 @@
 - (void)applyThemeValues {
     _lblCaptionTitle.textColor = _theme.captionTitleColor;
     _lblCaptionTitle.font = _theme.captionTitleFont;
-    
+
     _lblTime.textColor = _theme.timeLabelColor;
     _lblTime.font = _theme.timeLabelFont;
-    
-    if(_theme && _theme.timeLabelAtributes) {
-        _lblTime.attributedText = [[NSAttributedString alloc] initWithString:@"00:00" attributes:_theme.timeLabelAtributes];
+
+    if (_theme && _theme.timeLabelAtributes) {
+        _lblTime.attributedText =
+            [[NSAttributedString alloc] initWithString:@"00:00" attributes:_theme.timeLabelAtributes];
     } else {
         _lblTime.text = @"00:00";
     }
-    
+
     _viewGalleryControl.backgroundColor = _theme.captionBarBackgroundColor;
     _viewMediaControl.backgroundColor = _theme.captionBarBackgroundColor;
-    
+
     [_btnPlay setImage:_theme.playButtonImage forState:UIControlStateNormal];
     [_btnDone setImage:_theme.doneButtonImage forState:UIControlStateNormal];
-    
+
     _slider.minimumTrackTintColor = _theme.sliderProgressColor;
     _slider.maximumTrackTintColor = _theme.sliderTrackColor;
     [_slider setThumbImage:_theme.sliderThumbImage forState:UIControlStateNormal];
@@ -117,16 +117,15 @@
 
 #pragma GCC diagnostic pop
 
-
 - (void)changePlayPauseButtonState:(kPlayPauseButtonState)state {
-	if(state == kPlayPauseButtonStatePlay) {
-		_btnPlay.tag = TAG_PLAY;
-		[_btnPlay setImage:_theme.playButtonImage forState:UIControlStateNormal];
-		
-	} else {
-		_btnPlay.tag = TAG_PAUSE;
-		[_btnPlay setImage:_theme.pauseButtonImage forState:UIControlStateNormal];
-	}
+    if (state == kPlayPauseButtonStatePlay) {
+        _btnPlay.tag = TAG_PLAY;
+        [_btnPlay setImage:_theme.playButtonImage forState:UIControlStateNormal];
+
+    } else {
+        _btnPlay.tag = TAG_PAUSE;
+        [_btnPlay setImage:_theme.pauseButtonImage forState:UIControlStateNormal];
+    }
 }
 
 - (UISlider *)mediaControlSlider {
@@ -134,26 +133,25 @@
 }
 
 - (void)setTimeLabel:(NSString *)time {
-    if(_theme.timeLabelAtributes && time) {
+    if (_theme.timeLabelAtributes && time) {
         _lblTime.attributedText = [[NSAttributedString alloc] initWithString:time attributes:_theme.timeLabelAtributes];
     } else {
         _lblTime.text = time;
     }
 }
 
-
 #pragma mark - Visibility methods
 
 - (void)toggleDoneButtonState:(NSArray *)args {
-    if([[args firstObject] intValue] == kViewStateHidden) {
-        if(_isDoneButtonForcedHidden){
+    if ([[args firstObject] intValue] == kViewStateHidden) {
+        if (_isDoneButtonForcedHidden) {
             [self hideViewWithAlpha:_btnDone animated:NO];
         } else {
             [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         }
         _doneShowing = NO;
     } else {
-        if(!_isDoneButtonForcedHidden) {
+        if (!_isDoneButtonForcedHidden) {
             [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
         }
         _doneShowing = YES;
@@ -161,15 +159,15 @@
 }
 
 - (void)toggleMediaControlsState:(NSArray *)args {
-    if([[args firstObject] intValue] == kViewStateHidden) {
-        if(!_mediaShowing) {
+    if ([[args firstObject] intValue] == kViewStateHidden) {
+        if (!_mediaShowing) {
             return;
         }
         [self hideViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
         [self hideViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         _mediaShowing = NO;
     } else {
-        if(_mediaShowing){
+        if (_mediaShowing) {
             return;
         }
         [self showViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
@@ -179,11 +177,11 @@
 }
 
 - (void)toggleGalleryControlState:(NSArray *)args {
-    if([[args firstObject] intValue] == kViewStateHidden) {
-        if(!_galleryShowing){
+    if ([[args firstObject] intValue] == kViewStateHidden) {
+        if (!_galleryShowing) {
             return;
         }
-        if(_showPageControl){
+        if (_showPageControl) {
             [self hideViewWithAlpha:_viewGalleryControl animated:NO];
         } else {
             [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
@@ -191,10 +189,10 @@
 
         _galleryShowing = NO;
     } else {
-        if(_galleryShowing){
+        if (_galleryShowing) {
             return;
         }
-        if(!_showPageControl) {
+        if (!_showPageControl) {
             [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
         }
         _galleryShowing = YES;
@@ -202,41 +200,40 @@
 }
 
 - (void)toggleAllControls:(NSArray *)args {
-    if([[args firstObject] intValue] == kViewStateHidden) {
-        if(_doneShowing) {
-            if(_isDoneButtonForcedHidden){
+    if ([[args firstObject] intValue] == kViewStateHidden) {
+        if (_doneShowing) {
+            if (_isDoneButtonForcedHidden) {
                 [self hideViewWithAlpha:_btnDone animated:NO];
             } else {
                 [self hideViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
             }
         }
-        if(_mediaShowing){
+        if (_mediaShowing) {
             [self hideViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
             [self hideViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         }
-        if(_galleryShowing){
-            if(_showPageControl){
+        if (_galleryShowing) {
+            if (_showPageControl) {
                 [self hideViewWithAlpha:_viewGalleryControl animated:NO];
             } else {
                 [self hideViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
             }
-
         }
         _doneShowing = _mediaShowing = _galleryShowing = NO;
     } else {
-        if(!_doneShowing){
-            if(!_isDoneButtonForcedHidden) {
+        if (!_doneShowing) {
+            if (!_isDoneButtonForcedHidden) {
                 [self showViewWithAlpha:_btnDone animated:[[args lastObject] boolValue]];
             }
         }
-        
-        if(!_mediaShowing){
+
+        if (!_mediaShowing) {
             [self showViewWithAlpha:_btnPlay animated:[[args lastObject] boolValue]];
             [self showViewWithAlpha:_viewMediaControl animated:[[args lastObject] boolValue]];
         }
-        
-        if(!_galleryShowing){
-            if(!_showPageControl){
+
+        if (!_galleryShowing) {
+            if (!_showPageControl) {
                 [self showViewWithAlpha:_viewGalleryControl animated:[[args lastObject] boolValue]];
             }
         }
@@ -245,7 +242,7 @@
 }
 
 - (BOOL)isControlShowing {
-    if(_doneShowing || _galleryShowing) {
+    if (_doneShowing || _galleryShowing) {
         return YES;
     } else {
         return NO;
@@ -253,69 +250,77 @@
 }
 
 - (void)hideViewWithAlpha:(UIView *)view animated:(BOOL)animated {
-    if(animated) {
+    if (animated) {
         view.hidden = NO;
         view.alpha = 1.0;
-        [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            view.alpha = 0;
-        } completion:^(BOOL finished) {
-            view.hidden = YES;
-        }];
+        [UIView animateWithDuration:ANIMATION_DURATION
+            delay:0
+            options:UIViewAnimationOptionCurveEaseInOut
+            animations:^{
+              view.alpha = 0;
+            }
+            completion:^(BOOL finished) {
+              view.hidden = YES;
+            }];
     } else {
         view.hidden = YES;
     }
 }
 
 - (void)showViewWithAlpha:(UIView *)view animated:(BOOL)animated {
-    if(animated) {
+    if (animated) {
         view.hidden = NO;
         view.alpha = 0;
-        [UIView animateWithDuration:ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            view.alpha = 1.0;
-        } completion:nil];
+        [UIView animateWithDuration:ANIMATION_DURATION
+                              delay:0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                           view.alpha = 1.0;
+                         }
+                         completion:nil];
     } else {
         view.hidden = NO;
         view.alpha = 1.0;
     }
 }
 
-
 #pragma mark - IBActions
 
 - (IBAction)doneButtonClicked:(id)sender {
-    if(_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
+    if (_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
         [_delegate mediaControlDone];
     }
 }
 
 - (IBAction)playButtonClicked:(id)sender {
-	UIButton *btn = (UIButton *)sender;
-	if(btn == _btnPlay) {
-		if(btn.tag == TAG_PLAY) {
-			btn.tag = TAG_PAUSE;
+    UIButton *btn = (UIButton *)sender;
+    if (btn == _btnPlay) {
+        if (btn.tag == TAG_PLAY) {
+            btn.tag = TAG_PAUSE;
             [_btnPlay setImage:_theme.pauseButtonImage forState:UIControlStateNormal];
-            if(_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
+            if (_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
                 [_delegate mediaControlPlay];
             }
-		} else {
-			btn.tag = TAG_PLAY;
+        } else {
+            btn.tag = TAG_PLAY;
             [_btnPlay setImage:_theme.playButtonImage forState:UIControlStateNormal];
-            if(_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
+            if (_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
                 [_delegate mediaControlPause];
             }
-		}
-	}
+        }
+    }
 }
 
 - (IBAction)sliderValueChanged:(id)sender {
-    if(_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
+    if (_delegate && [_delegate conformsToProtocol:@protocol(SHMediaControlViewDelegate)]) {
         [_delegate mediaControlSeekBarValueChanged];
     }
 }
 
--(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     for (UIView *view in self.subviews) {
-        if (!view.hidden && view.alpha > 0 && view.userInteractionEnabled && [view pointInside:[self convertPoint:point toView:view] withEvent:event])
+        if (!view.hidden && view.alpha > 0 && view.userInteractionEnabled &&
+            [view pointInside:[self convertPoint:point toView:view] withEvent:event])
             return YES;
     }
     return NO;
