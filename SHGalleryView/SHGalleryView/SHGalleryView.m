@@ -21,7 +21,6 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) SHMediaControlView *mediaControlView;
 
-@property (nonatomic) NSInteger totalNumberOfItems;
 @property (nonatomic) NSInteger currentIndex;
 @property (nonatomic) NSInteger nextIndex;
 
@@ -44,9 +43,7 @@
         self.backgroundColor = [UIColor clearColor];
     }
 
-    _totalNumberOfItems = [_dataSource numberOfItems];
     _currentIndex = 0;
-
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                         options:nil];
@@ -116,25 +113,25 @@
     willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     UIViewController<SHGalleryViewControllerChild> *controller = [pendingViewControllers firstObject];
     self.nextIndex = controller.pageIndex;
-    
+
     if ([self.delegate respondsToSelector:@selector(galleryView:willDisplayItemAtIndex:)]) {
         [self.delegate galleryView:self willDisplayItemAtIndex:(int)self.nextIndex];
     }
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
-         didFinishAnimating:(BOOL)finished
-    previousViewControllers:(NSArray *)previousViewControllers
-        transitionCompleted:(BOOL)completed {
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
     if (completed) {
         self.currentIndex = self.nextIndex;
         [self updateMediaControls];
-        
+
         if ([self.delegate respondsToSelector:@selector(galleryView:didDisplayItemAtIndex:)]) {
             [self.delegate galleryView:self didDisplayItemAtIndex:(int)self.currentIndex];
         }
     }
-    
+
     _pageControl.currentPage = _currentIndex;
     self.nextIndex = 0;
 }
@@ -153,7 +150,6 @@
 }
 
 - (void)reloadData {
-    _totalNumberOfItems = [_dataSource numberOfItems];
     _currentIndex = 0;
     _pageControl.numberOfPages = [_dataSource numberOfItems];
     [self initializePageViewAtIndex:_currentIndex];
@@ -174,11 +170,11 @@
 }
 
 - (UIViewController<SHGalleryViewControllerChild> *)viewControllerAtIndex:(NSInteger)index {
-    if (_totalNumberOfItems == 0) {
+    if ([_dataSource numberOfItems] == 0) {
         return nil;
     }
 
-    if (index < 0 || index >= _totalNumberOfItems) {
+    if (index < 0 || index >= [_dataSource numberOfItems]) {
         return nil;
     }
 
@@ -296,21 +292,19 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    _totalNumberOfItems = [_dataSource numberOfItems];
-    [[_pageViewController view] setFrame:[self bounds]];
 
+    [[_pageViewController view] setFrame:[self bounds]];
     CGSize recommendedSize = [_pageControl sizeForNumberOfPages:[_dataSource numberOfItems]];
     CGFloat x = CGRectGetMidX(_pageViewController.view.bounds);
     _pageControl.frame = CGRectMake(0, _pageViewController.view.bounds.size.height - recommendedSize.height, recommendedSize.width, recommendedSize.height);
     _pageControl.center = CGPointMake(x, _pageControl.center.y);
-    
+
     [self setNeedsUpdateConstraints];
 }
 
 - (void)updateConstraints {
     [super updateConstraints];
-    
+
     [SHUtil constrainViewEqual:_pageViewController.view toParent:self];
     [SHUtil constrainViewEqual:_mediaControlView toParent:self];
 }
