@@ -38,24 +38,18 @@
 }
 
 - (void)setupGalleryView {
-    if (_theme && _theme.backgroundColor) {
-        self.backgroundColor = _theme.backgroundColor;
-    } else {
-        self.backgroundColor = [UIColor clearColor];
-    }
-
     _totalNumberOfItems = [_dataSource numberOfItems];
     _currentIndex = 0;
-
+    
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                         options:nil];
-
+    
     _pageViewController.dataSource = self;
     _pageViewController.delegate = self;
-
+    
     [self addSubview:[_pageViewController view]];
-
+    
     if (_showPageControl) {
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.hidesForSinglePage = YES;
@@ -63,34 +57,37 @@
         _pageControl.currentPage = _currentIndex;
         [self addSubview:_pageControl];
     }
-
+    
     _mediaControlView = (SHMediaControlView *)[SHUtil viewFromNib:@"SHMediaControlView" bundle:nil];
     _mediaControlView.delegate = self;
-    _mediaControlView.theme = _theme;
     _mediaControlView.showPageControl = _showPageControl;
     _mediaControlView.isDoneButtonForcedHidden = _isDoneButtonForcedHidden;
-
+    
     [self addSubview:_mediaControlView];
-    [self triggerPageControlAppearance];
-
+    
     [self updateMediaControls];
     [self initializePageViewAtIndex:_currentIndex];
-
+    
     _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [_tapGesture setDelegate:self];
     [self addGestureRecognizer:_tapGesture];
+    
+    // This is so that it doesn't break existing code that sets the theme
+    // before calling setup.
+    if (self.theme) {
+        [self applyTheme];
+    }
 }
 
 - (void)triggerPageControlAppearance {
-    UIPageControl *pageControl = [UIPageControl appearanceWhenContainedIn:[self class], nil];
     if (_theme.pageControlDotColor) {
-        pageControl.pageIndicatorTintColor = _theme.pageControlDotColor;
+        self.pageControl.pageIndicatorTintColor = _theme.pageControlDotColor;
     }
     if (_theme.pageControlCurrentDotColor) {
-        pageControl.currentPageIndicatorTintColor = _theme.pageControlCurrentDotColor;
+        self.pageControl.currentPageIndicatorTintColor = _theme.pageControlCurrentDotColor;
     }
     if (_theme.pageControlBackgroundColor) {
-        pageControl.backgroundColor = _theme.pageControlBackgroundColor;
+        self.pageControl.backgroundColor = _theme.pageControlBackgroundColor;
     }
 }
 
@@ -113,7 +110,7 @@
 #pragma mark - UIPageViewController Delegate methods
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
-    willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     UIViewController<SHGalleryViewControllerChild> *controller = [pendingViewControllers firstObject];
     self.nextIndex = controller.pageIndex;
     
@@ -123,9 +120,9 @@
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
-         didFinishAnimating:(BOOL)finished
-    previousViewControllers:(NSArray *)previousViewControllers
-        transitionCompleted:(BOOL)completed {
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
     if (completed) {
         self.currentIndex = self.nextIndex;
         [self updateMediaControls];
@@ -167,7 +164,7 @@
     } else {
         direction = UIPageViewControllerNavigationDirectionReverse;
     }
-
+    
     _currentIndex = index;
     [self initializePageViewAtIndex:_currentIndex];
     [self updateMediaControls];
@@ -177,11 +174,11 @@
     if (_totalNumberOfItems == 0) {
         return nil;
     }
-
+    
     if (index < 0 || index >= _totalNumberOfItems) {
         return nil;
     }
-
+    
     SHMediaItem *item = [_dataSource mediaItemIndex:index];
     UIViewController<SHGalleryViewControllerChild> *viewController;
     // check for item, if it is nil, trigger the assert.
@@ -219,35 +216,46 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaPlay
                                                         object:nil
                                                       userInfo:@{
-                                                          @"currentIndex" : @(_currentIndex)
-                                                      }];
+                                                                 @"currentIndex" : @(_currentIndex)
+                                                                 }];
 }
 
 - (void)mediaControlPause {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaPause
                                                         object:nil
                                                       userInfo:@{
-                                                          @"currentIndex" : @(_currentIndex)
-                                                      }];
+                                                                 @"currentIndex" : @(_currentIndex)
+                                                                 }];
 }
 
 - (void)mediaControlSeekBarValueChanged {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaSliderValueChanged
                                                         object:nil
                                                       userInfo:@{
-                                                          @"currentIndex" : @(_currentIndex)
-                                                      }];
+                                                                 @"currentIndex" : @(_currentIndex)
+                                                                 }];
 }
 
 - (void)mediaControlDone {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaStop
                                                         object:nil
                                                       userInfo:@{
-                                                          @"currentIndex" : @(_currentIndex)
-                                                      }];
+                                                                 @"currentIndex" : @(_currentIndex)
+                                                                 }];
     if (_delegate && [_delegate conformsToProtocol:@protocol(SHGalleryViewControllerDelegate)]) {
         [_delegate doneClicked];
     }
+}
+
+- (void)applyTheme {
+    if (_theme && _theme.backgroundColor) {
+        self.backgroundColor = _theme.backgroundColor;
+    } else {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    
+    [self triggerPageControlAppearance];
+    _mediaControlView.theme = _theme;
 }
 
 #pragma mark - Property methods
@@ -255,6 +263,12 @@
 - (void)setIsDoneButtonForcedHidden:(BOOL)isDoneButtonForcedHidden {
     _isDoneButtonForcedHidden = isDoneButtonForcedHidden;
     _mediaControlView.isDoneButtonForcedHidden = _isDoneButtonForcedHidden;
+}
+
+- (void)setTheme:(SHGalleryViewTheme *)theme {
+    _theme = theme;
+    
+    [self applyTheme];
 }
 
 #pragma mark - UITapGestureRecognizer methods
@@ -281,7 +295,7 @@
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 
@@ -299,7 +313,7 @@
     
     _totalNumberOfItems = [_dataSource numberOfItems];
     [[_pageViewController view] setFrame:[self bounds]];
-
+    
     CGSize recommendedSize = [_pageControl sizeForNumberOfPages:[_dataSource numberOfItems]];
     CGFloat x = CGRectGetMidX(_pageViewController.view.bounds);
     _pageControl.frame = CGRectMake(0, _pageViewController.view.bounds.size.height - recommendedSize.height, recommendedSize.width, recommendedSize.height);
