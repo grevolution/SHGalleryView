@@ -9,7 +9,7 @@
 #import "SHImageMediaItemViewController.h"
 #import "SHMediaControlView.h"
 #import "SHMediaItem.h"
-#import <UIImageView+AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 #import "SHGalleryViewControllerChild.h"
 
 #define ZOOM_VIEW_TAG 100
