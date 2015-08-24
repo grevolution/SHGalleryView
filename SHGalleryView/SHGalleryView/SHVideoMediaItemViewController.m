@@ -11,7 +11,7 @@
 #import "SHMediaControlView.h"
 #import "SHUtil.h"
 #import "SHMediaItem.h"
-#import <UIImageView+AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 #import "SHGalleryViewControllerChild.h"
 #import "SHGalleryView.h"
 
