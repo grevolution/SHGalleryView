@@ -38,16 +38,16 @@
 
 - (void)setupGalleryView {
     _currentIndex = 0;
-    
+
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                           navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                         options:nil];
-    
+
     _pageViewController.dataSource = self;
     _pageViewController.delegate = self;
-    
+
     [self addSubview:[_pageViewController view]];
-    
+
     if (_showPageControl) {
         _pageControl = [[UIPageControl alloc] init];
         _pageControl.hidesForSinglePage = YES;
@@ -55,21 +55,21 @@
         _pageControl.currentPage = _currentIndex;
         [self addSubview:_pageControl];
     }
-    
+
     _mediaControlView = (SHMediaControlView *)[SHUtil viewFromNib:@"SHMediaControlView" bundle:nil];
     _mediaControlView.delegate = self;
     _mediaControlView.showPageControl = _showPageControl;
     _mediaControlView.isDoneButtonForcedHidden = _isDoneButtonForcedHidden;
-    
+
     [self addSubview:_mediaControlView];
-    
+
     [self updateMediaControls];
     [self initializePageViewAtIndex:_currentIndex];
-    
+
     _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     [_tapGesture setDelegate:self];
     [self addGestureRecognizer:_tapGesture];
-    
+
     // This is so that it doesn't break existing code that sets the theme
     // before calling setup.
     if (self.theme) {
@@ -108,7 +108,7 @@
 #pragma mark - UIPageViewController Delegate methods
 
 - (void)pageViewController:(UIPageViewController *)pageViewController
-willTransitionToViewControllers:(NSArray *)pendingViewControllers {
+    willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     UIViewController<SHGalleryViewControllerChild> *controller = [pendingViewControllers firstObject];
     self.nextIndex = controller.pageIndex;
 
@@ -161,7 +161,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     } else {
         direction = UIPageViewControllerNavigationDirectionReverse;
     }
-    
+
     _currentIndex = index;
     [self initializePageViewAtIndex:_currentIndex];
     [self updateMediaControls];
@@ -175,7 +175,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     if (index < 0 || index >= [_dataSource numberOfItems]) {
         return nil;
     }
-    
+
     SHMediaItem *item = [_dataSource mediaItemIndex:index];
     UIViewController<SHGalleryViewControllerChild> *viewController;
     // check for item, if it is nil, trigger the assert.
@@ -213,32 +213,32 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaPlay
                                                         object:nil
                                                       userInfo:@{
-                                                                 @"currentIndex" : @(_currentIndex)
-                                                                 }];
+                                                          @"currentIndex" : @(_currentIndex)
+                                                      }];
 }
 
 - (void)mediaControlPause {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaPause
                                                         object:nil
                                                       userInfo:@{
-                                                                 @"currentIndex" : @(_currentIndex)
-                                                                 }];
+                                                          @"currentIndex" : @(_currentIndex)
+                                                      }];
 }
 
 - (void)mediaControlSeekBarValueChanged {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaSliderValueChanged
                                                         object:nil
                                                       userInfo:@{
-                                                                 @"currentIndex" : @(_currentIndex)
-                                                                 }];
+                                                          @"currentIndex" : @(_currentIndex)
+                                                      }];
 }
 
 - (void)mediaControlDone {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationMediaStop
                                                         object:nil
                                                       userInfo:@{
-                                                                 @"currentIndex" : @(_currentIndex)
-                                                                 }];
+                                                          @"currentIndex" : @(_currentIndex)
+                                                      }];
     if (_delegate && [_delegate conformsToProtocol:@protocol(SHGalleryViewControllerDelegate)]) {
         [_delegate doneClicked];
     }
@@ -250,7 +250,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers {
     } else {
         self.backgroundColor = [UIColor clearColor];
     }
-    
+
     [self triggerPageControlAppearance];
     _mediaControlView.theme = _theme;
 }
@@ -264,7 +264,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers {
 
 - (void)setTheme:(SHGalleryViewTheme *)theme {
     _theme = theme;
-    
+
     [self applyTheme];
 }
 
@@ -292,7 +292,7 @@ willTransitionToViewControllers:(NSArray *)pendingViewControllers {
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
 }
 

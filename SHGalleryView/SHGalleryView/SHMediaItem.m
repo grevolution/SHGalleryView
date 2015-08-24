@@ -10,19 +10,23 @@
 
 @implementation SHMediaItem
 
-- (instancetype)initWithMediaType:(kMediaType)mediaType
-                          andPath:(NSString *)resourcePath {
-    if((self = [super init])) {
+- (instancetype)init {
+    if ((self = [super init])) {
+        _imageContentMode = UIViewContentModeScaleAspectFit;
+    }
+    return self;
+}
+
+- (instancetype)initWithMediaType:(kMediaType)mediaType andPath:(NSString *)resourcePath {
+    if ((self = [self init])) {
         _mediaType = mediaType;
         _resourcePath = resourcePath;
     }
     return self;
 }
 
-+ (instancetype)mediaItemWithMediaType:(kMediaType)mediaType
-                               andPath:(NSString *)resourcePath {
++ (instancetype)mediaItemWithMediaType:(kMediaType)mediaType andPath:(NSString *)resourcePath {
     return [[self alloc] initWithMediaType:mediaType andPath:resourcePath];
 }
-
 
 @end

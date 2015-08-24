@@ -8,11 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(int, kMediaType) {
-    kMediaTypeImage = 0,
-    kMediaTypeVideo = 1
-};
-
+typedef NS_ENUM(int, kMediaType) { kMediaTypeImage = 0, kMediaTypeVideo = 1 };
 
 /**
  *  this class defines the individual media item that you want to show in the gallery view.
@@ -44,6 +40,10 @@ typedef NS_ENUM(int, kMediaType) {
  */
 @property (nonatomic, strong) NSString *mediaThumbnailImagePath;
 
+/**
+ *  the content mode of the image. this only applies on the image media item.
+ */
+@property (nonatomic) UIViewContentMode imageContentMode;
 
 /**
  *  initializer for `SHMediaItem`
@@ -53,8 +53,7 @@ typedef NS_ENUM(int, kMediaType) {
  *
  *  @return returns the newly created object
  */
-- (instancetype)initWithMediaType:(kMediaType)mediaType
-                          andPath:(NSString *)resourcePath;
+- (instancetype)initWithMediaType:(kMediaType)mediaType andPath:(NSString *)resourcePath;
 
 /**
  *  static initializer for `SHMediaItem`
@@ -64,8 +63,6 @@ typedef NS_ENUM(int, kMediaType) {
  *
  *  @return returns the newly created object
  */
-+ (instancetype)mediaItemWithMediaType:(kMediaType)mediaType
-                          andPath:(NSString *)resourcePath;
-
++ (instancetype)mediaItemWithMediaType:(kMediaType)mediaType andPath:(NSString *)resourcePath;
 
 @end
