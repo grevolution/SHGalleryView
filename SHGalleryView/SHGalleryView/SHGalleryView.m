@@ -56,7 +56,7 @@
         [self addSubview:_pageControl];
     }
 
-    _mediaControlView = (SHMediaControlView *)[SHUtil viewFromNib:@"SHMediaControlView" bundle:nil];
+    _mediaControlView = (SHMediaControlView *)[SHUtil viewFromNib:@"SHMediaControlView" bundle:[NSBundle bundleForClass:self.class]];
     _mediaControlView.delegate = self;
     _mediaControlView.showPageControl = _showPageControl;
     _mediaControlView.isDoneButtonForcedHidden = _isDoneButtonForcedHidden;
@@ -182,13 +182,13 @@
     NSAssert(item != nil, @"");
     if (item.mediaType == kMediaTypeVideo) {
         // video
-        viewController = (SHVideoMediaItemViewController<SHGalleryViewControllerChild> *)[[SHVideoMediaItemViewController alloc] init];
+        viewController = (SHVideoMediaItemViewController<SHGalleryViewControllerChild> *)[[SHVideoMediaItemViewController alloc] initWithNibName:@"SHVideoMediaItemViewController" bundle:[NSBundle bundleForClass:self.class]];
         viewController.mediaItem = item;
         viewController.pageIndex = index;
         ((SHVideoMediaItemViewController *)viewController).mediaControlView = _mediaControlView;
     } else {
         // image
-        viewController = (SHImageMediaItemViewController<SHGalleryViewControllerChild> *)[[SHImageMediaItemViewController alloc] init];
+        viewController = (SHImageMediaItemViewController<SHGalleryViewControllerChild> *)[[SHImageMediaItemViewController alloc] initWithNibName:@"SHImageMediaItemViewController" bundle:[NSBundle bundleForClass:self.class]];
         viewController.mediaItem = item;
         viewController.pageIndex = index;
         ((SHImageMediaItemViewController *)viewController).disablePinchAndZoomOnImage = _disablePinchAndZoomOnImages;
