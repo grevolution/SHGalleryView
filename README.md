@@ -6,9 +6,9 @@ This is a Page View Controller based Gallery for Images and Videos which you can
 [![Build Status](https://img.shields.io/travis/grevolution/SHGalleryView.svg?branch=master)](https://travis-ci.org/grevolution/SHGalleryView) [![Pod Version](https://img.shields.io/cocoapods/v/SHGalleryView.svg)](https://img.shields.io/cocoapods/v/SHGalleryView.svg) [![License](https://img.shields.io/cocoapods/l/SHGalleryView.svg)](https://img.shields.io/cocoapods/l/SHGalleryView.svg)
 
 
-##Changelog
+## Changelog
 
-###0.0.9 (March 17, 2015)
+### 0.0.9 (March 17, 2015)
 
 Changes:
 
@@ -16,7 +16,7 @@ Changes:
 - SHGalleryViewController is still there for backward compatibility and to show the Gallery modally.
 
 
-###0.0.8 (Feb 28, 2015)
+### 0.0.8 (Feb 28, 2015)
 
 Features:
 
@@ -39,7 +39,7 @@ Changes:
 
 ////////////////////////////////
 
-##SHGalleryView
+## SHGalleryView
 
 - Video in Gallery
 ![image-1](https://raw.github.com/grevolution/SHGalleryView/master/wiki-images/1.png)
@@ -50,7 +50,7 @@ Changes:
 - Image in Gallery
 ![image-3](https://raw.github.com/grevolution/SHGalleryView/master/wiki-images/3.png)
 
-##Contact Me
+## Contact Me
 
 Shan Ul Haq (http://grevolution.me)
 
@@ -60,6 +60,6 @@ Shan Ul Haq (http://grevolution.me)
 
 - http://twitter.com/gfg5tek
 
-##License
+## License
 
 `SHGalleryView` is available under the MIT license. See the LICENSE file for more info.
