@@ -1,3 +1,5 @@
-platform :ios, '6.0'
+platform :ios, '9.0'
 
-pod 'AFNetworking/UIKit'
+target 'SHGalleryView' do
+    pod 'AFNetworking/UIKit'
+end

@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,7 +21,7 @@
                         <constraint firstAttribute="height" constant="60" id="R8w-N3-ffz"/>
                     </constraints>
                     <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="doneButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="aa3-DR-n9U"/>
@@ -33,7 +37,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="gsL-oR-wMQ" secondAttribute="bottom" constant="10" id="60g-FU-Shj"/>
                         <constraint firstItem="gsL-oR-wMQ" firstAttribute="leading" secondItem="uJq-mC-x3v" secondAttribute="leading" constant="58" id="VoH-F6-SDW"/>
@@ -45,18 +49,18 @@
                     <rect key="frame" x="0.0" y="242" width="568" height="40"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfZ-GH-s2s">
-                            <rect key="frame" x="514" y="11" width="39" height="18"/>
+                            <rect key="frame" x="511.5" y="11" width="41.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lHl-Z2-FZg">
-                            <rect key="frame" x="13" y="5" width="488" height="31"/>
+                            <rect key="frame" x="13" y="5" width="485.5" height="31"/>
                             <connections>
                                 <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="iN9-pd-1tF"/>
                             </connections>
                         </slider>
                     </subviews>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="sfZ-GH-s2s" secondAttribute="centerY" constant="0.5" id="0xH-vI-BCX"/>
                         <constraint firstAttribute="height" constant="40" id="1pP-Tw-Ute"/>
@@ -69,14 +73,14 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBW-se-3bT">
                     <rect key="frame" x="269" y="103" width="30" height="34"/>
                     <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="playButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="xXu-wz-l3P"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="uJq-mC-x3v" firstAttribute="top" secondItem="YTD-Sq-8vu" secondAttribute="bottom" id="2TR-61-pGE"/>
                 <constraint firstItem="5HF-a2-LtM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ala-qh-oF9"/>
@@ -90,7 +94,6 @@
                 <constraint firstAttribute="bottom" secondItem="uJq-mC-x3v" secondAttribute="bottom" id="y6T-0j-EPF"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btnDone" destination="5HF-a2-LtM" id="JQw-KI-asE"/>
@@ -104,9 +107,4 @@
             <point key="canvasLocation" x="285" y="238"/>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
