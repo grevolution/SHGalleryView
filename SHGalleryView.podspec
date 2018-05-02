@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SHGalleryView"
-  s.version      = "0.1.7"
+  s.version      = "1.0.0"
   s.summary      = "An iOS Gallery View for Images and Videos"
 
   s.description  = <<-DESC
@@ -20,13 +20,13 @@ Pod::Spec.new do |s|
   s.author        = { "Shan Ul Haq" => "g@grevolution.me" }
 
   s.platform      = :ios
-  s.platform      = :ios, "6.0"
+  s.platform      = :ios, "8.0"
   s.source        = { :git => "https://github.com/grevolution/SHGalleryView.git", :tag => s.version }
   s.source_files  = "SHGalleryView/SHGalleryView/*.{h,m}"
   s.resources     = "SHGalleryView/SHGalleryView/*.{xib}"
 
   s.framework  = "MediaPlayer"
   s.requires_arc = true
-  s.dependency "AFNetworking/UIKit", "~>2.2"
+  s.dependency "AFNetworking/UIKit", "~>3.0"
 
 end
